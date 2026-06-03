@@ -30,6 +30,7 @@
       --green-50: #EAF3DE; --green-600: #3B6D11;
       --coral-600: #BA7517;
       --purple-50: #F0EAFC; --purple-200: #C4A8F0; --purple-600: #6B21A8; --purple-800: #4A1578;
+      --indigo-50: #EEF2FF; --indigo-200: #A5B4FC; --indigo-600: #4F46E5; --indigo-800: #3730A3;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -51,6 +52,7 @@
         --amber-600: #EF9F27; --pink-600: #D4537E;
         --coral-600: #EF9F27;
         --purple-50: #1f0f35; --purple-200: #7C3AED; --purple-600: #A78BFA; --purple-800: #D4BBFF;
+        --indigo-50: #1e1b4b; --indigo-200: #6366F1; --indigo-600: #818CF8; --indigo-800: #C7D2FE;
       }
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -334,6 +336,7 @@
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('conclusiones', this)">Conclusiones</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('checklist', this)">Lista de verificación</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('articulo', this)">📄 De tesis a artículo</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('perfiles', this)">🎓 Perfil investigador</button>
   </nav>
 
   <!-- ═══════════ RESUMEN ═══════════ -->
@@ -513,6 +516,32 @@
     <div class="elements-grid" id="articulo-elements"></div>
   </div>
 
+  <!-- ═══════════ PERFIL INVESTIGADOR ═══════════ -->
+  <div class="section" id="tab-perfiles">
+    <div class="info-panel">
+      <p>Tu identidad como investigador/a se construye desde el posgrado. Crear y mantener tus perfiles académicos te da <strong>visibilidad internacional</strong>, facilita que te citen correctamente, y es un requisito para muchos procesos editoriales y de evaluación (como el SECIHTI).</p>
+    </div>
+
+    <div class="hilo-banner">
+      <i class="ti ti-user-check"></i>
+      <p><strong>Empieza hoy:</strong> No esperes a publicar para abrir tus perfiles. Muchas plataformas permiten registrar tu tesis, ponencias y proyectos en curso. Entre más temprano empieces, más completo estará tu historial cuando publiques tu primer artículo.</p>
+    </div>
+
+    <div class="info-panel" style="padding:1rem 1.25rem">
+      <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:500;margin-bottom:10px"><i class="ti ti-link" style="vertical-align:-1px"></i> Crea tus perfiles aquí</p>
+      <div class="resources-grid">
+        <a href="https://orcid.org/register" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-fingerprint" style="color:var(--indigo-600)"></i><div class="rl-info"><span class="rl-name">ORCID</span><span class="rl-desc">Identificador único universal</span></div></a>
+        <a href="https://scholar.google.com/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-school" style="color:var(--indigo-600)"></i><div class="rl-info"><span class="rl-name">Google Scholar</span><span class="rl-desc">Perfil de citas y métricas</span></div></a>
+        <a href="https://www.researchgate.net/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-flask" style="color:var(--indigo-600)"></i><div class="rl-info"><span class="rl-name">ResearchGate</span><span class="rl-desc">Red social académica</span></div></a>
+        <a href="https://secihti.gob.mx" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-id" style="color:var(--indigo-600)"></i><div class="rl-info"><span class="rl-name">CVU SECIHTI</span><span class="rl-desc">Currículum oficial México</span></div></a>
+        <a href="https://www.scopus.com/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-database" style="color:var(--indigo-600)"></i><div class="rl-info"><span class="rl-name">Scopus Author ID</span><span class="rl-desc">Se genera al publicar en Scopus</span></div></a>
+        <a href="https://www.webofscience.com/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-world-search" style="color:var(--indigo-600)"></i><div class="rl-info"><span class="rl-name">Web of Science</span><span class="rl-desc">Perfil Clarivate / Publons</span></div></a>
+      </div>
+    </div>
+
+    <div class="elements-grid" id="perfiles-elements"></div>
+  </div>
+
   <!-- ═══════════ CHECKLIST ═══════════ -->
   <div class="section" id="tab-checklist">
     <div class="summary-grid" id="summary-cards"></div>
@@ -522,6 +551,7 @@
       <button class="chip" onclick="switchCL('intro-c', this)">Introducción</button>
       <button class="chip" onclick="switchCL('conclusiones-c', this)">Conclusiones</button>
       <button class="chip" onclick="switchCL('articulo-c', this)">De tesis a artículo</button>
+      <button class="chip" onclick="switchCL('perfiles-c', this)">Perfil investigador</button>
     </div>
     <div class="checklist-head">
       <span class="cl-label">Elementos a verificar</span>
@@ -534,6 +564,7 @@
     <div class="cl-section" id="cl-intro-c"></div>
     <div class="cl-section" id="cl-conclusiones-c"></div>
     <div class="cl-section" id="cl-articulo-c"></div>
+    <div class="cl-section" id="cl-perfiles-c"></div>
   </div>
 
   <footer class="footer">
@@ -696,6 +727,36 @@ const data = {
         qs:['¿Tienes listos todos los archivos (manuscrito, figuras, tablas, cover letter)?','¿El manuscrito cumple con el formato de la revista?','¿Conoces los dictámenes posibles: Accept, Minor/Major Revisions, Reject?','¿Sabes responder punto por punto a los revisores?','¿Tienes un plan B con otra revista si es rechazado?'],
         ej:'Ante un «Revise and Resubmit»: (1) Lee los comentarios con calma, espera 48h. (2) Haz tabla: comentario del revisor → cambio realizado → ubicación en manuscrito. (3) Sé respetuoso pero defiende tu posición con evidencia. (4) Reenvía en el plazo indicado.' }
     ]
+  },
+  perfiles: {
+    num:'#EEF2FF', numTxt:'#3730A3', tag:'#EEF2FF', tagTxt:'#4F46E5', border:'#6366F1',
+    exBg:'#EEF2FF', exTxt:'#3730A3',
+    elements:[
+      { title:'ORCID — Tu identificador único', tag:'Obligatorio · Prioridad alta',
+        desc:'ORCID (Open Researcher and Contributor ID) es un código único de 16 dígitos que te identifica como investigador/a a nivel mundial. Resuelve el problema de nombres duplicados o ambiguos. Casi todas las revistas lo exigen al enviar un manuscrito y el SECIHTI lo solicita en el CVU.',
+        qs:['¿Ya tienes tu ORCID registrado en orcid.org?','¿Tu ORCID está vinculado a tu institución (IPN)?','¿Has agregado tu formación académica y afiliación actual?','¿Has activado la sincronización con Scopus o Web of Science?'],
+        ej:'Formato ORCID: 0000-0002-1234-5678. Se registra en orcid.org con tu correo institucional. Una vez creado, agrégalo a tu firma de correo, tu CV y tus manuscritos. Muchas revistas lo vinculan automáticamente a tu publicación.' },
+      { title:'Google Scholar — Tu escaparate de citas', tag:'Imprescindible · Visibilidad',
+        desc:'Google Scholar es la plataforma más usada para buscar literatura académica. Crear un perfil permite que tus publicaciones se agrupen bajo tu nombre, muestra tu índice h y tus citas, y aparece en los primeros resultados cuando alguien busca tu nombre como investigador/a.',
+        qs:['¿Has creado tu perfil en scholar.google.com?','¿Usas tu correo institucional para mayor credibilidad?','¿Tu nombre aparece consistente (igual que en tus publicaciones)?','¿Has verificado que tus publicaciones estén correctamente atribuidas?','¿Has configurado alertas para nuevas citas?'],
+        ej:'Para crear tu perfil: (1) Entra a scholar.google.com con tu cuenta de Google. (2) Haz clic en "Mi perfil". (3) Agrega tu afiliación: "SEPI-ESE, Instituto Politécnico Nacional". (4) Agrega tus áreas de interés. (5) Verifica con correo institucional.' },
+      { title:'ResearchGate — Red social académica', tag:'Recomendado · Networking',
+        desc:'ResearchGate es la red social más grande para investigadores. Permite compartir publicaciones (incluso preprints), hacer y responder preguntas, y conectar con colegas de tu área. Tu RG Score refleja tu actividad e impacto en la plataforma.',
+        qs:['¿Tienes cuenta en researchgate.net?','¿Has completado tu perfil con afiliación, áreas de investigación y habilidades?','¿Has subido tu tesis o ponencias como preprints?','¿Sigues a investigadores clave de tu área?','¿Respondes o participas en las preguntas del foro?'],
+        ej:'ResearchGate permite subir preprints (versiones previas a la publicación) de tus trabajos, lo cual aumenta tu visibilidad antes de que el artículo sea aceptado. También puedes solicitar artículos directamente a los autores.' },
+      { title:'CVU SECIHTI — Tu currículum oficial', tag:'Obligatorio México · Normativa',
+        desc:'El CVU (Currículum Vitae Único) del SECIHTI (antes CONACYT) es el registro oficial de tu trayectoria académica en México. Es obligatorio para solicitar becas, ingresar al Sistema Nacional de Investigadores, y participar en convocatorias de investigación. Manténlo actualizado siempre.',
+        qs:['¿Tienes tu número de CVU asignado por el SECIHTI?','¿Tu formación académica está completa y actualizada?','¿Has registrado tus productos académicos (tesis, ponencias, publicaciones)?','¿Tu ORCID está vinculado a tu CVU?'],
+        ej:'El CVU se gestiona en la plataforma del SECIHTI (secihti.gob.mx). Necesitas: (1) CURP, (2) correo institucional, (3) datos de tu programa de posgrado. Registra TODO: tesis dirigidas/en curso, ponencias, estancias, cursos impartidos, artículos. Cada producto suma para el SNI.' },
+      { title:'Scopus Author ID y Web of Science', tag:'Automático · Al publicar',
+        desc:'Estos identificadores se generan automáticamente cuando publicas en revistas indexadas en Scopus (Elsevier) o Web of Science (Clarivate). No puedes crearlos de antemano, pero debes conocerlos y reclamar tu perfil una vez que publiques para que tus métricas se calculen correctamente.',
+        qs:['¿Sabes que Scopus Author ID se genera al publicar en una revista Scopus?','¿Conoces Web of Science ResearcherID (ahora integrado con Publons)?','¿Sabes cómo reclamar y corregir tu perfil en ambas plataformas?','¿Has vinculado tu ORCID a estas bases para sincronizar publicaciones?'],
+        ej:'Cuando publiques tu primer artículo en una revista Scopus, busca tu nombre en scopus.com > Authors. Si hay errores o duplicados, usa el formulario de corrección de Scopus. Lo mismo aplica para Web of Science: reclama tu perfil y vincula tu ORCID.' },
+      { title:'Buenas prácticas para tus perfiles', tag:'Consejos · Mantenimiento',
+        desc:'Tener perfiles no basta — hay que mantenerlos. Un perfil desactualizado o inconsistente da mala impresión. Usa siempre el mismo nombre en todas las plataformas, actualiza regularmente, y conecta tus cuentas entre sí para que se sincronicen automáticamente.',
+        qs:['¿Usas exactamente el mismo nombre en todos tus perfiles (incluido el de tus publicaciones)?','¿Tus perfiles muestran tu afiliación institucional actual?','¿Has vinculado ORCID con Google Scholar, Scopus, WoS y CVU?','¿Actualizas tus perfiles cada vez que produces algo nuevo (ponencia, artículo, tesis)?','¿Tu foto de perfil es profesional o institucional?'],
+        ej:'Nombre consistente: decide cómo firmarás SIEMPRE. Ejemplo: "Jiménez-Preciado, A.L." o "Ana L. Jiménez Preciado". Usa guiones para apellidos compuestos. Vincula todo a tu ORCID como hub central. Actualiza al menos cada semestre.' }
+    ]
   }
 };
 
@@ -752,6 +813,18 @@ const clItems = {
     {id:'a10',t:'El manuscrito cumple con las instrucciones para autores de la revista'},
     {id:'a11',t:'He verificado que la revista es reconocida por el SECIHTI'},
     {id:'a12',t:'Tengo un plan B con una segunda revista en caso de rechazo'}
+  ],
+  'perfiles-c':[
+    {id:'pf1',t:'He creado mi ORCID y lo tengo vinculado a mi institución'},
+    {id:'pf2',t:'Tengo perfil de Google Scholar con correo institucional'},
+    {id:'pf3',t:'He creado mi cuenta en ResearchGate con perfil completo'},
+    {id:'pf4',t:'Tengo mi CVU del SECIHTI registrado y actualizado'},
+    {id:'pf5',t:'Uso el mismo nombre consistente en todos mis perfiles'},
+    {id:'pf6',t:'Mi ORCID está vinculado a mis demás plataformas'},
+    {id:'pf7',t:'He registrado mi tesis y/o ponencias en mis perfiles'},
+    {id:'pf8',t:'Mi afiliación institucional está actualizada en todos los perfiles'},
+    {id:'pf9',t:'Tengo alertas configuradas en Google Scholar para nuevas citas'},
+    {id:'pf10',t:'Sé cómo reclamar mi perfil en Scopus/WoS cuando publique'}
   ]
 };
 
@@ -853,7 +926,8 @@ function updateSummary() {
     {key:'palabras-c',  lbl:'Palabras clave'},
     {key:'intro-c',     lbl:'Introducción'},
     {key:'conclusiones-c', lbl:'Conclusiones'},
-    {key:'articulo-c',  lbl:'Tesis→Artículo'}
+    {key:'articulo-c',  lbl:'Tesis→Artículo'},
+    {key:'perfiles-c',  lbl:'Perfiles'}
   ];
   const total   = Object.values(clItems).flat().length;
   const done    = Object.values(checked).filter(Boolean).length;
@@ -873,7 +947,7 @@ function updateSummary() {
 }
 
 /* ── INIT ───────────────────────────────────────────── */
-['resumen','palabras','intro','conclusiones','articulo'].forEach(k => buildElements(k+'-elements', k));
+['resumen','palabras','intro','conclusiones','articulo','perfiles'].forEach(k => buildElements(k+'-elements', k));
 Object.keys(clItems).forEach(k => buildCL(k));
 updateSummary();
 </script>
