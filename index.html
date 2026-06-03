@@ -29,6 +29,7 @@
       --pink-50: #FBEAF0; --pink-600: #993556; --pink-700: #72243E;
       --green-50: #EAF3DE; --green-600: #3B6D11;
       --coral-600: #BA7517;
+      --purple-50: #F0EAFC; --purple-200: #C4A8F0; --purple-600: #6B21A8; --purple-800: #4A1578;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -49,6 +50,7 @@
         --blue-600: #378ADD; --teal-600: #1D9E75;
         --amber-600: #EF9F27; --pink-600: #D4537E;
         --coral-600: #EF9F27;
+        --purple-50: #1f0f35; --purple-200: #7C3AED; --purple-600: #A78BFA; --purple-800: #D4BBFF;
       }
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -272,6 +274,44 @@
       .tab-btn { padding: 6px 13px; font-size: 12px; }
       .el-tag { display: none; }
     }
+
+    /* RESOURCES GRID */
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
+    .resource-link {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 14px; background: var(--bg-primary);
+      border: 0.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      text-decoration: none; color: var(--text-primary);
+      font-size: 13px; transition: all 0.18s;
+    }
+    .resource-link:hover { border-color: var(--border-medium); background: var(--bg-secondary); }
+    .resource-link i { font-size: 18px; flex-shrink: 0; color: var(--purple-600); }
+    .resource-link .rl-info { display: flex; flex-direction: column; }
+    .resource-link .rl-name { font-weight: 500; }
+    .resource-link .rl-desc { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+
+    /* COVER LETTER */
+    .cover-letter { font-size: 13px; color: var(--text-secondary); line-height: 1.85; }
+    .cover-letter p { margin-bottom: 0.75rem; }
+    .cl-placeholder {
+      background: var(--purple-50); color: var(--purple-800);
+      padding: 1px 6px; border-radius: 3px; font-weight: 500; font-size: 12px;
+    }
+
+    /* COMPARISON TABLE */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 13px; }
+    .comparison-table th {
+      text-align: left; padding: 8px 12px;
+      background: var(--bg-secondary); color: var(--text-primary);
+      font-weight: 500; font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.05em; border-bottom: 1px solid var(--border-medium);
+    }
+    .comparison-table td {
+      padding: 8px 12px; border-bottom: 0.5px solid var(--border-subtle);
+      color: var(--text-secondary); line-height: 1.5;
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
   </style>
 </head>
 <body>
@@ -293,6 +333,7 @@
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('intro', this)">Introducción</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('conclusiones', this)">Conclusiones</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('checklist', this)">Lista de verificación</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('articulo', this)">📄 De tesis a artículo</button>
   </nav>
 
   <!-- ═══════════ RESUMEN ═══════════ -->
@@ -412,6 +453,66 @@
     <div class="elements-grid" id="conclusiones-elements"></div>
   </div>
 
+  <!-- ═══════════ DE TESIS A ARTÍCULO ═══════════ -->
+  <div class="section" id="tab-articulo">
+    <div class="info-panel">
+      <p>Convertir tu tesis en un artículo científico es el paso natural para difundir tu investigación. Esta guía te lleva <strong>paso a paso</strong> desde la evaluación de publicabilidad hasta el envío a una revista indexada, incluyendo cómo evitar revistas depredadoras y entender los criterios del <strong>SECIHTI</strong> (antes CONACYT).</p>
+    </div>
+
+    <div class="hilo-banner">
+      <i class="ti ti-bulb"></i>
+      <p><strong>Dato clave:</strong> La mayoría de artículos publicados en revistas de alto impacto pasaron por al menos 1-2 rondas de revisión. Un «Revise &amp; Resubmit» no es un rechazo — es una señal de que tu trabajo tiene potencial.</p>
+    </div>
+
+    <div class="info-panel" style="padding:1rem 1.25rem">
+      <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:500;margin-bottom:10px"><i class="ti ti-world" style="vertical-align:-1px"></i> Herramientas y recursos esenciales</p>
+      <div class="resources-grid">
+        <a href="https://thinkchecksubmit.org/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-shield-check"></i><div class="rl-info"><span class="rl-name">Think.Check.Submit</span><span class="rl-desc">Verificar legitimidad de revistas</span></div></a>
+        <a href="https://doaj.org/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-book-2"></i><div class="rl-info"><span class="rl-name">DOAJ</span><span class="rl-desc">Revistas de acceso abierto verificadas</span></div></a>
+        <a href="https://www.latindex.org/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-globe"></i><div class="rl-info"><span class="rl-name">Latindex 2.0</span><span class="rl-desc">Revistas iberoamericanas indexadas</span></div></a>
+        <a href="https://www.scimagojr.com/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-chart-bar"></i><div class="rl-info"><span class="rl-name">Scimago / SJR</span><span class="rl-desc">Rankings y métricas de revistas</span></div></a>
+        <a href="https://beallslist.net/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-alert-triangle"></i><div class="rl-info"><span class="rl-name">Lista de Beall</span><span class="rl-desc">Editoriales potencialmente depredadoras</span></div></a>
+        <a href="https://v2.sherpa.ac.uk/romeo/" target="_blank" rel="noopener" class="resource-link"><i class="ti ti-file-search"></i><div class="rl-info"><span class="rl-name">Sherpa Romeo</span><span class="rl-desc">Políticas de acceso abierto</span></div></a>
+      </div>
+    </div>
+
+    <div class="example-full">
+      <div class="example-full-header" id="hdr-articulo-full" onclick="toggleFull('articulo-full')">
+        <span class="ex-badge" style="background:var(--purple-50);color:var(--purple-600)">Ejemplo práctico</span>
+        <span class="example-full-title">Cover Letter — modelo de carta de presentación al editor</span>
+        <i class="ti ti-chevron-down ex-chevron"></i>
+      </div>
+      <div class="example-full-body" id="articulo-full">
+        <div class="cover-letter">
+          <p>Estimado/a Editor/a:</p>
+          <p>Le envío el manuscrito titulado <span class="cl-placeholder">"Transferencias fiscales y desigualdad regional en México: evidencia de panel para 32 entidades federativas (2010–2022)"</span> para su consideración en <span class="cl-placeholder">[Nombre de la Revista]</span>.</p>
+          <p>El artículo analiza la relación entre la estructura de la recaudación fiscal federal y la desigualdad en el desarrollo económico regional en México, utilizando modelos de regresión de datos de panel con efectos fijos. Los resultados demuestran que un mayor volumen de transferencias per cápita <strong>no reduce significativamente</strong> la brecha regional en ausencia de mecanismos de eficiencia en el gasto subnacional — hallazgo que desafía la lógica redistributiva implícita en el sistema de coordinación fiscal vigente.</p>
+          <p>Consideramos que este trabajo es relevante para la audiencia de <span class="cl-placeholder">[Nombre de la Revista]</span> porque: (a) aborda un problema central del federalismo fiscal latinoamericano con evidencia empírica actualizada, (b) incorpora el período post-pandemia que no ha sido analizado previamente, y (c) ofrece implicaciones concretas de política pública para el diseño de transferencias intergubernamentales.</p>
+          <p>Declaro que este manuscrito es original, no ha sido publicado previamente y no se encuentra en proceso de revisión en ninguna otra revista. Todos los autores han aprobado la versión final y aceptan los términos de publicación.</p>
+          <p>Quedo atenta a su respuesta.</p>
+          <p>Atentamente,<br><span class="cl-placeholder">[Nombre del autor]</span><br><span class="cl-placeholder">[Afiliación institucional]</span><br><span class="cl-placeholder">[Correo electrónico]</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:500;margin-bottom:10px"><i class="ti ti-arrows-exchange" style="vertical-align:-1px"></i> Tesis vs. Artículo: diferencias clave</p>
+      <table class="comparison-table">
+        <thead><tr><th>Aspecto</th><th>Tesis</th><th>Artículo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Extensión</strong></td><td>80–150 páginas</td><td>15–25 páginas (6,000–8,000 palabras)</td></tr>
+          <tr><td><strong>Marco teórico</strong></td><td>Capítulo completo y exhaustivo</td><td>Revisión breve integrada en introducción</td></tr>
+          <tr><td><strong>Metodología</strong></td><td>Detallada con justificación paso a paso</td><td>Concisa pero reproducible</td></tr>
+          <tr><td><strong>Resultados</strong></td><td>Todos los análisis realizados</td><td>Solo los más relevantes al argumento</td></tr>
+          <tr><td><strong>Tono</strong></td><td>Formativo y demostrativo</td><td>Argumentativo y directo</td></tr>
+          <tr><td><strong>Audiencia</strong></td><td>Comité de tesis</td><td>Comunidad científica internacional</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="elements-grid" id="articulo-elements"></div>
+  </div>
+
   <!-- ═══════════ CHECKLIST ═══════════ -->
   <div class="section" id="tab-checklist">
     <div class="summary-grid" id="summary-cards"></div>
@@ -420,6 +521,7 @@
       <button class="chip" onclick="switchCL('palabras-c', this)">Palabras clave</button>
       <button class="chip" onclick="switchCL('intro-c', this)">Introducción</button>
       <button class="chip" onclick="switchCL('conclusiones-c', this)">Conclusiones</button>
+      <button class="chip" onclick="switchCL('articulo-c', this)">De tesis a artículo</button>
     </div>
     <div class="checklist-head">
       <span class="cl-label">Elementos a verificar</span>
@@ -431,6 +533,7 @@
     <div class="cl-section" id="cl-palabras-c"></div>
     <div class="cl-section" id="cl-intro-c"></div>
     <div class="cl-section" id="cl-conclusiones-c"></div>
+    <div class="cl-section" id="cl-articulo-c"></div>
   </div>
 
   <footer class="footer">
@@ -555,6 +658,44 @@ const data = {
         qs:['¿Se declara explícitamente la aportación teórica y/o práctica?','¿Es el párrafo final de las conclusiones?','¿Responde a "¿qué sabe ahora la disciplina que no sabía antes"?'],
         ej:'El problema de la desigualdad regional en México no es de insuficiencia en las transferencias, sino de desconexión entre el gasto federal descentralizado y la capacidad institucional subnacional: esta evidencia reorienta la agenda de política pública hacia el fortalecimiento de la gestión fiscal local.' }
     ]
+  },
+  articulo: {
+    num:'#F0EAFC', numTxt:'#4A1578', tag:'#F0EAFC', tagTxt:'#6B21A8', border:'#8B5CF6',
+    exBg:'#F0EAFC', exTxt:'#4A1578',
+    elements:[
+      { title:'Evalúa si tu tesis es publicable', tag:'Autoevaluación · Paso 1',
+        desc:'No todas las tesis se convierten en artículos. Evalúa si tu trabajo tiene originalidad, datos propios o análisis novedoso, y una contribución clara al debate de tu campo. Una tesis puramente descriptiva puede requerir trabajo adicional antes de ser publicable.',
+        qs:['¿Tu investigación aporta algo nuevo al campo (datos, método, hallazgos)?','¿Los resultados son robustos para sostenerse ante revisión por pares?','¿Existe un vacío en la literatura que tu trabajo llena?','¿Tienes datos originales o un análisis inédito?'],
+        ej:'Una tesis sobre transferencias fiscales y desigualdad regional con datos de panel 2010–2022 tiene potencial: (a) cubre un período no estudiado, (b) usa econometría rigurosa, y (c) genera hallazgos contraintuitivos.' },
+      { title:'Reestructura tu tesis como artículo', tag:'Redacción · Paso 2',
+        desc:'La tesis es exhaustiva (80–150 pp); el artículo es conciso y argumentativo (15–25 pp, ~7,000 palabras). Recorta el marco teórico, fusiona secciones y reescribe con tono directo. Consulta la tabla comparativa Tesis vs. Artículo de esta sección.',
+        qs:['¿Redujiste el marco teórico a lo esencial para contextualizar tu aporte?','¿La introducción va directo al problema, vacío y objetivo?','¿La metodología es reproducible pero concisa?','¿Los resultados se presentan con tablas/figuras claras?','¿La discusión compara tus hallazgos con la literatura?'],
+        ej:'Tesis (120 pp) → Artículo: Introducción (2-3 pp), Revisión de literatura (2 pp), Metodología (3 pp), Resultados (4-5 pp), Discusión (2-3 pp), Conclusiones (1 p). Total: ~7,000 palabras.' },
+      { title:'Identifica revistas potenciales', tag:'Búsqueda · Paso 3',
+        desc:'Investiga al menos 3-5 revistas ordenadas por preferencia. Revisa en qué revistas publican los autores que citas — eso te da pistas directas. Usa Scopus, Web of Science, Latindex 2.0, DOAJ y Scimago para comparar métricas.',
+        qs:['¿Has buscado en Scopus, WoS o Latindex 2.0 revistas de tu área?','¿Has revisado en qué revistas publican los autores que citas?','¿Conoces el Factor de Impacto, SJR o CiteScore de tus opciones?','¿Verificaste que la revista esté indexada en al menos un índice reconocido?','¿La revista publica artículos con metodología similar?'],
+        ej:'Para un artículo sobre federalismo fiscal: Investigación Económica (UNAM, Scopus), El Trimestre Económico (FCE, WoS), Economía Teoría y Práctica (UAM), Problemas del Desarrollo (UNAM), o Journal of Latin American Studies.' },
+      { title:'Verifica que NO sea revista depredadora', tag:'Seguridad · Paso 4',
+        desc:'Las revistas depredadoras cobran por publicar sin revisión por pares real. Publicar en una daña tu reputación y el SECIHTI no reconoce esas publicaciones. Usa Think.Check.Submit y la lista de Beall para verificar antes de enviar.',
+        qs:['¿La revista aparece en DOAJ, Scopus, WoS o Latindex 2.0 Catálogo?','¿El sitio web tiene errores, promete publicación ultra-rápida o carece de ISSN?','¿Has verificado en thinkchecksubmit.org?','¿La editorial aparece en la lista de Beall (beallslist.net)?','¿El comité editorial tiene investigadores reales y verificables?','¿El proceso de revisión por pares está descrito transparentemente?'],
+        ej:'Red flags: invitaciones no solicitadas por correo, publicación en 2-4 semanas, APC sospechoso, sin indexación reconocida, comité editorial ficticio o con personas sin publicaciones verificables.' },
+      { title:'Evalúa costos y tiempos de publicación', tag:'Planeación · Paso 5',
+        desc:'Publicar puede ser gratuito o costar miles de dólares. Muchas revistas latinoamericanas usan el modelo diamante (sin costo para nadie). Otras cobran APC (Article Processing Charges). Investiga antes de enviar y pregunta por waivers.',
+        qs:['¿Conoces el costo de publicación (APC) de tus revistas candidatas?','¿Has verificado si ofrecen waiver para instituciones de países en desarrollo?','¿Sabes cuánto tarda el proceso de revisión (promedio 3-6 meses)?','¿Tu institución tiene fondos para apoyar publicaciones?','¿Has considerado revistas sin APC (modelo diamante)?'],
+        ej:'Modelos: (1) Suscripción: gratis para el autor, acceso cerrado. (2) Acceso abierto con APC: $500–$3,000 USD. (3) Diamante: sin costo para nadie — muchas revistas UNAM, UAM y latinoamericanas operan con este modelo.' },
+      { title:'Revisa el scope y escribe tu cover letter', tag:'Preparación · Paso 6',
+        desc:'El Aims and Scope define qué publica cada revista. Si tu artículo no encaja, será rechazado sin llegar a revisores. La cover letter es tu primera impresión ante el editor: concisa y convincente. Consulta el ejemplo expandible de esta sección.',
+        qs:['¿Tu artículo se alinea con el Aims and Scope de la revista?','¿Has revisado artículos recientes para confirmar el encaje?','¿Tu manuscrito cumple con las instrucciones para autores (formato, extensión, citas)?','¿Tu cover letter explica por qué es relevante para ESA revista?','¿Declaras que el manuscrito no está en revisión en otra revista?'],
+        ej:'Cover letter en 4 párrafos: (1) título y solicitud, (2) hallazgo principal en 2-3 oraciones, (3) por qué es relevante para ESA revista, (4) declaraciones éticas y de originalidad. Ver modelo completo en el panel expandible de arriba.' },
+      { title:'El SECIHTI y las revistas reconocidas', tag:'Contexto México · Paso 7',
+        desc:'El SECIHTI (antes CONACYT) administra el Sistema Nacional de Investigadores. Para ciencias sociales y humanidades, valora publicaciones en JCR (Web of Science), Scopus, Latindex Catálogo 2.0, DOAJ y SciELO. Conocer estos criterios te ayuda a elegir dónde publicar.',
+        qs:['¿Conoces los criterios del SECIHTI para reconocer una revista?','¿La revista está en índices que el SECIHTI reconoce (WoS, Scopus, Latindex 2.0)?','¿Sabes la diferencia entre revistas internacionales vs. nacionales para la evaluación?','¿Tu programa de posgrado tiene requisitos adicionales sobre dónde publicar?'],
+        ej:'El SECIHTI reconoce publicaciones en: Web of Science (JCR), Scopus, y bases complementarias. Las revistas del Catálogo Latindex 2.0, DOAJ y SciELO son especialmente valoradas en ciencias sociales. Consulta criterios vigentes en secihti.gob.mx.' },
+      { title:'Envía y da seguimiento al proceso', tag:'Envío · Paso 8',
+        desc:'El envío no termina cuando subes el manuscrito. El proceso de peer review puede incluir rondas de correcciones. Un «Revise and Resubmit» no es un rechazo — es una oportunidad. La mayoría de artículos publicados pasaron por al menos una ronda de revisión.',
+        qs:['¿Tienes listos todos los archivos (manuscrito, figuras, tablas, cover letter)?','¿El manuscrito cumple con el formato de la revista?','¿Conoces los dictámenes posibles: Accept, Minor/Major Revisions, Reject?','¿Sabes responder punto por punto a los revisores?','¿Tienes un plan B con otra revista si es rechazado?'],
+        ej:'Ante un «Revise and Resubmit»: (1) Lee los comentarios con calma, espera 48h. (2) Haz tabla: comentario del revisor → cambio realizado → ubicación en manuscrito. (3) Sé respetuoso pero defiende tu posición con evidencia. (4) Reenvía en el plazo indicado.' }
+    ]
   }
 };
 
@@ -597,6 +738,20 @@ const clItems = {
     {id:'c6',t:'Se proponen al menos dos líneas futuras de investigación'},
     {id:'c7',t:'Cierra con la aportación original al campo (el broche de oro)'},
     {id:'c8',t:'Los hallazgos son conclusiones analíticas, no descripciones de procedimientos'}
+  ],
+  'articulo-c':[
+    {id:'a1',t:'He evaluado que mi tesis tiene contribución original al campo'},
+    {id:'a2',t:'He reestructurado el contenido en formato de artículo (IMRyD)'},
+    {id:'a3',t:'El artículo tiene entre 6,000 y 8,000 palabras'},
+    {id:'a4',t:'He identificado al menos 3 revistas potenciales ordenadas por preferencia'},
+    {id:'a5',t:'He verificado que las revistas estén indexadas (Scopus, WoS, Latindex 2.0, DOAJ)'},
+    {id:'a6',t:'He descartado revistas depredadoras usando Think.Check.Submit'},
+    {id:'a7',t:'Conozco los costos de publicación o he verificado que sea acceso abierto diamante'},
+    {id:'a8',t:'Mi artículo se alinea con el Aims and Scope de la revista seleccionada'},
+    {id:'a9',t:'He escrito una cover letter profesional para el editor'},
+    {id:'a10',t:'El manuscrito cumple con las instrucciones para autores de la revista'},
+    {id:'a11',t:'He verificado que la revista es reconocida por el SECIHTI'},
+    {id:'a12',t:'Tengo un plan B con una segunda revista en caso de rechazo'}
   ]
 };
 
@@ -697,7 +852,8 @@ function updateSummary() {
     {key:'resumen-c',   lbl:'Abstract'},
     {key:'palabras-c',  lbl:'Palabras clave'},
     {key:'intro-c',     lbl:'Introducción'},
-    {key:'conclusiones-c', lbl:'Conclusiones'}
+    {key:'conclusiones-c', lbl:'Conclusiones'},
+    {key:'articulo-c',  lbl:'Tesis→Artículo'}
   ];
   const total   = Object.values(clItems).flat().length;
   const done    = Object.values(checked).filter(Boolean).length;
@@ -717,7 +873,7 @@ function updateSummary() {
 }
 
 /* ── INIT ───────────────────────────────────────────── */
-['resumen','palabras','intro','conclusiones'].forEach(k => buildElements(k+'-elements', k));
+['resumen','palabras','intro','conclusiones','articulo'].forEach(k => buildElements(k+'-elements', k));
 Object.keys(clItems).forEach(k => buildCL(k));
 updateSummary();
 </script>
