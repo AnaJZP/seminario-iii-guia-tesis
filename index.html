@@ -385,7 +385,7 @@
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('resumen', this)">Abstract / Resumen</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('palabras', this)">Palabras clave</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('intro', this)">Introducción</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('capitulos', this)">Capítulos: tablas, figuras y ecuaciones</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('capitulos', this)">Capítulos 1 a 3</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('conclusiones', this)">Conclusiones</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('checklist', this)">Lista de verificación</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('articulo', this)">📄 De tesis a artículo</button>
@@ -425,9 +425,9 @@
     <div class="struct-group">
       <div class="struct-head"><span class="struct-title">Cuerpo</span><span class="struct-note">Números arábigos desde el Capítulo 1</span></div>
       <ol class="struct-list" start="10">
-          <li class="struct-item"><span class="struct-num">10</span><div class="struct-body"><div class="struct-name">Capítulo 1. Marco teórico</div><div class="struct-desc">En la plantilla: cómo citar y cómo presentar ecuaciones.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
-          <li class="struct-item"><span class="struct-num">11</span><div class="struct-body"><div class="struct-name">Capítulo 2. El mercado de derivados en México</div><div class="struct-desc">En la plantilla: cómo presentar tablas y figuras.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
-          <li class="struct-item"><span class="struct-num">12</span><div class="struct-body"><div class="struct-name">Capítulo 3. Metodología y resultados</div><div class="struct-desc">Tabla de variables, especificación del modelo y tabla de resultados.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
+          <li class="struct-item"><span class="struct-num">10</span><div class="struct-body"><div class="struct-name">Capítulo 1. Marco teórico</div><div class="struct-desc">Teorías y evidencia que sustentan la hipótesis. En la plantilla: cómo citar en APA 7.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
+          <li class="struct-item"><span class="struct-num">11</span><div class="struct-body"><div class="struct-name">Capítulo 2. Marco contextual</div><div class="struct-desc">Entorno del problema con hechos estilizados. En la plantilla: cómo presentar tablas y figuras.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
+          <li class="struct-item"><span class="struct-num">12</span><div class="struct-body"><div class="struct-name">Capítulo 3. Metodología y análisis de resultados</div><div class="struct-desc">Variables, ecuaciones del modelo y análisis de resultados en tres apartados: descripción, contraste con la literatura e implicaciones de política pública o regulación.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
           <li class="struct-item"><span class="struct-num">13</span><div class="struct-body"><div class="struct-name">Conclusiones</div><div class="struct-desc">Cierre argumentativo: retoma el problema, confirma objetivo e hipótesis y remata con la aportación.</div></div><button class="struct-link" onclick="goTab('conclusiones')">Ver guía</button></li>
       </ol>
     </div>
@@ -538,7 +538,7 @@
           <span class="el-label" style="color:var(--amber-600)">⑤ Variables</span>
           <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">La variable dependiente es el logaritmo del volumen mensual de contratos de futuros del dólar negociados en el MexDer. Las variables independientes son la volatilidad condicional del tipo de cambio FIX, el diferencial entre la TIIE y la tasa de fondos federales de Estados Unidos y el logaritmo del volumen de futuros del peso en el CME; como variables de control se incluyen el índice VIX y una variable dicotómica para la pandemia de COVID-19.</span>
           <span class="el-label" style="color:var(--green-600)">⑥ Estructura del documento</span>
-          <span class="hl" style="background:var(--green-50);color:var(--green-600)">El documento se organiza en tres capítulos y un apartado de conclusiones. El Capítulo 1 presenta el marco teórico sobre la cobertura con futuros; el Capítulo 2 describe la evolución del mercado de derivados en México; el Capítulo 3 expone la metodología, las variables y los resultados de la estimación; finalmente, las conclusiones discuten los hallazgos, las limitaciones y las líneas futuras de investigación.</span>
+          <span class="hl" style="background:var(--green-50);color:var(--green-600)">El documento se organiza en tres capítulos y un apartado de conclusiones. El Capítulo 1 presenta el marco teórico sobre la cobertura con futuros; el Capítulo 2 desarrolla el marco contextual, con la evolución del mercado de derivados en México; el Capítulo 3 expone la metodología y el análisis de resultados, que incluye la descripción de los hallazgos, su contraste con la literatura y sus implicaciones de política pública y regulación; finalmente, las conclusiones retoman los hallazgos, las limitaciones y las líneas futuras de investigación.</span>
         </div>
       </div>
     </div>
@@ -548,28 +548,61 @@
   <!-- ═══════════ CAPÍTULOS ═══════════ -->
   <div class="section" id="tab-capitulos">
     <div class="info-panel">
-      <p>El contenido de cada capítulo lo trabajas con tus directores de tesis. Aquí solo se explica cómo presentar los elementos que más se revisan en APA 7: <strong>citas, ecuaciones, tablas y figuras</strong>. Cada capítulo inicia con un párrafo que presenta su propósito y su relación con el objetivo de la investigación.</p>
+      <p>El contenido de cada capítulo lo trabajas con tus directores de tesis. Aquí se explica qué lleva cada capítulo y cómo presentar sus elementos en APA 7: el <strong>Capítulo 1</strong> (marco teórico) se apoya en las citas; el <strong>Capítulo 2</strong> (marco contextual) incorpora tablas y figuras; y el <strong>Capítulo 3</strong> (metodología y análisis de resultados) suma las ecuaciones y el análisis de resultados en tres apartados.</p>
     </div>
     <div class="hilo-banner">
       <i class="ti ti-link"></i>
-      <p>Los ejemplos salen de los capítulos de la plantilla: <strong>Capítulo 1</strong> (marco teórico) → citas y ecuaciones; <strong>Capítulo 2</strong> (mercado de derivados en México) → tablas y figuras; <strong>Capítulo 3</strong> (metodología y resultados) → tabla de variables, modelo y tabla de resultados.</p>
+      <p>Cada capítulo inicia con un párrafo que presenta su propósito y su relación con el objetivo. Los ejemplos salen de la plantilla de Word, con el mismo hilo: <strong>volatilidad cambiaria y futuros del dólar en el MexDer</strong>.</p>
     </div>
 
     <div class="example-full">
-      <div class="example-full-header" id="hdr-cap-ecuaciones" onclick="toggleFull('cap-ecuaciones')">
-        <span class="ex-badge" style="background:var(--blue-50);color:var(--blue-600)">Así se ve</span>
-        <span class="example-full-title">Citas y ecuaciones — Capítulos 1 y 3</span>
+      <div class="example-full-header" id="hdr-cap1-citas" onclick="toggleFull('cap1-citas')">
+        <span class="ex-badge" style="background:var(--blue-50);color:var(--blue-600)">Capítulo 1</span>
+        <span class="example-full-title">Marco teórico — citas en el texto</span>
         <i class="ti ti-chevron-down ex-chevron"></i>
       </div>
-      <div class="example-full-body" id="cap-ecuaciones">
+      <div class="example-full-body" id="cap1-citas">
         <div class="apa-sample">
-          <span class="sample-tag">Citas</span>
+          <span class="sample-tag">Citas en APA 7</span>
           <p><strong>Parentética:</strong> los agentes con exposición en el mercado de contado toman posiciones en futuros para reducir la varianza de su riqueza (Johnson, 1960).</p>
           <p><strong>Narrativa:</strong> de acuerdo con Ederington (1979), la efectividad de una cobertura se mide como la proporción de la varianza de la posición que se elimina al cubrirla.</p>
-          <span class="sample-tag" style="margin-top:0.6rem">Ecuaciones</span>
-          <p>La razón de cobertura de mínima varianza, <i>h</i>*, es la proporción de la posición de contado que debe cubrirse con futuros para minimizar el riesgo (Johnson, 1960), y se obtiene con la ecuación (1):</p>
-          <div class="eq-row"><div class="eq-math"><math display="block"><msup><mi>h</mi><mo>*</mo></msup><mo>=</mo><mfrac><mrow><mi mathvariant="normal">Cov</mi><mo>(</mo><mi mathvariant="normal">Δ</mi><msub><mi>S</mi><mi>t</mi></msub><mo>,</mo><mi mathvariant="normal">Δ</mi><msub><mi>F</mi><mi>t</mi></msub><mo>)</mo></mrow><mrow><mi mathvariant="normal">Var</mi><mo>(</mo><mi mathvariant="normal">Δ</mi><msub><mi>F</mi><mi>t</mi></msub><mo>)</mo></mrow></mfrac></math></div><span class="eq-num">(1)</span></div>
-          <p>donde Δ<i>S<sub>t</sub></i> es el cambio en el tipo de cambio de contado y Δ<i>F<sub>t</sub></i> es el cambio en el precio del contrato de futuros del dólar en el período <i>t</i>.</p>
+          <p><strong>Varios autores en una misma cita:</strong> la teoría de la cobertura con futuros se basa en la reducción de la varianza de la posición de contado (Ederington, 1979; Johnson, 1960).</p>
+          <p><strong>Cita textual (menos de 40 palabras):</strong> «…» (Apellido, año, p. 15). Con 40 palabras o más, va en un bloque aparte, con sangría y sin comillas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-full">
+      <div class="example-full-header" id="hdr-cap2-figuras" onclick="toggleFull('cap2-figuras')">
+        <span class="ex-badge" style="background:var(--teal-50);color:var(--teal-600)">Capítulo 2</span>
+        <span class="example-full-title">Marco contextual — tablas y figuras</span>
+        <i class="ti ti-chevron-down ex-chevron"></i>
+      </div>
+      <div class="example-full-body" id="cap2-figuras">
+        <div class="apa-sample">
+          <span class="sample-tag">Figura</span>
+          <p>Como se observa en la Figura 1, el volumen anual de futuros negociado en el MexDer pasó de 48.4 millones en 2009 a 6.8 millones en 2022, una caída cercana a 86%.</p>
+          <div class="apa-cap-num">Figura 1</div>
+          <div class="apa-cap-title">Volumen anual de negociación de contratos de futuros en el MexDer, 2009 a 2022</div>
+          <div class="apa-fig"><svg viewBox="0 0 480 262" role="img" aria-label="Línea que muestra la caída del volumen anual de futuros en el MexDer de 48.4 millones en 2009 a 6.8 millones en 2022"><line x1="58" x2="470" y1="228.0" y2="228.0" stroke="currentColor" stroke-opacity="0.6" stroke-width="1"/><text x="50" y="232.0" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">0</text><line x1="58" x2="470" y1="186.4" y2="186.4" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="190.4" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">10</text><line x1="58" x2="470" y1="144.8" y2="144.8" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="148.8" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">20</text><line x1="58" x2="470" y1="103.2" y2="103.2" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="107.2" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">30</text><line x1="58" x2="470" y1="61.6" y2="61.6" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="65.6" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">40</text><line x1="58" x2="470" y1="20.0" y2="20.0" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="24.0" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">50</text><text x="58.0" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2009</text><text x="121.4" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2011</text><text x="184.8" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2013</text><text x="248.2" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2015</text><text x="311.5" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2017</text><text x="374.9" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2019</text><text x="438.3" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2021</text><polyline points="58.0,26.7 89.7,54.0 121.4,35.6 153.1,54.5 184.8,117.4 216.5,106.4 248.2,159.2 279.8,175.9 311.5,183.8 343.2,195.4 374.9,201.5 406.6,200.5 438.3,196.6 470.0,199.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="58.0" cy="26.7" r="2.6" fill="currentColor"><title>2009: 48.4 millones</title></circle><circle cx="89.7" cy="54.0" r="2.6" fill="currentColor"><title>2010: 41.8 millones</title></circle><circle cx="121.4" cy="35.6" r="2.6" fill="currentColor"><title>2011: 46.2 millones</title></circle><circle cx="153.1" cy="54.5" r="2.6" fill="currentColor"><title>2012: 41.7 millones</title></circle><circle cx="184.8" cy="117.4" r="2.6" fill="currentColor"><title>2013: 26.6 millones</title></circle><circle cx="216.5" cy="106.4" r="2.6" fill="currentColor"><title>2014: 29.2 millones</title></circle><circle cx="248.2" cy="159.2" r="2.6" fill="currentColor"><title>2015: 16.5 millones</title></circle><circle cx="279.8" cy="175.9" r="2.6" fill="currentColor"><title>2016: 12.5 millones</title></circle><circle cx="311.5" cy="183.8" r="2.6" fill="currentColor"><title>2017: 10.6 millones</title></circle><circle cx="343.2" cy="195.4" r="2.6" fill="currentColor"><title>2018: 7.8 millones</title></circle><circle cx="374.9" cy="201.5" r="2.6" fill="currentColor"><title>2019: 6.4 millones</title></circle><circle cx="406.6" cy="200.5" r="2.6" fill="currentColor"><title>2020: 6.6 millones</title></circle><circle cx="438.3" cy="196.6" r="2.6" fill="currentColor"><title>2021: 7.5 millones</title></circle><circle cx="470.0" cy="199.5" r="2.6" fill="currentColor"><title>2022: 6.8 millones</title></circle><text x="14" y="124" transform="rotate(-90 14 124)" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">Millones</text></svg></div>
+          <p class="apa-note"><i>Nota.</i> Elaboración propia con datos de [fuente de los datos] (año).</p>
+          <p style="margin-top:0.8rem">Las tablas siguen el mismo formato: <strong>Tabla 1</strong> en negritas, título en cursiva arriba, solo líneas horizontales y la nota con la fuente debajo. Mira el ejemplo de la Tabla 3 en el Capítulo 3.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-full">
+      <div class="example-full-header" id="hdr-cap3-ecuaciones" onclick="toggleFull('cap3-ecuaciones')">
+        <span class="ex-badge" style="background:var(--amber-50);color:var(--amber-600)">Capítulo 3</span>
+        <span class="example-full-title">Metodología — ecuaciones del modelo</span>
+        <i class="ti ti-chevron-down ex-chevron"></i>
+      </div>
+      <div class="example-full-body" id="cap3-ecuaciones">
+        <div class="apa-sample">
+          <span class="sample-tag">3.2 Especificación del modelo</span>
+          <p>La volatilidad condicional del tipo de cambio se estima con un modelo GARCH(1,1), cuya ecuación de varianza es la ecuación (1):</p>
+          <div class="eq-row"><div class="eq-math"><math display="block"><msub><mi>h</mi><mi>t</mi></msub><mo>=</mo><mi>ω</mi><mo>+</mo><mi>a</mi><msubsup><mi>ε</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>+</mo><mi>b</mi><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></math></div><span class="eq-num">(1)</span></div>
+          <p>donde <i>h<sub>t</sub></i> es la varianza condicional del rendimiento del tipo de cambio FIX en el mes <i>t</i>, ε<sub><i>t</i>−1</sub> es el choque del período anterior y ω, <i>a</i> y <i>b</i> son parámetros por estimar. La volatilidad condicional es σ<sub><i>t</i></sub><sup>FX</sup> = √<i>h<sub>t</sub></i>.</p>
           <p>La relación entre la volatilidad cambiaria y el volumen negociado se estima con la ecuación (2):</p>
           <div class="eq-row"><div class="eq-math"><math display="block"><mi>ln</mi><mo>&#x2061;</mo><mspace width="0.2em"></mspace><msub><mi>VOL</mi><mi>t</mi></msub><mo>=</mo><mi>α</mi><mo>+</mo><msub><mi>β</mi><mn>1</mn></msub><msubsup><mi>σ</mi><mi>t</mi><mi>FX</mi></msubsup><mo>+</mo><msub><mi>β</mi><mn>2</mn></msub><msub><mi>DIF</mi><mi>t</mi></msub><mo>+</mo><msub><mi>β</mi><mn>3</mn></msub><mi>ln</mi><mo>&#x2061;</mo><mspace width="0.2em"></mspace><msub><mi>CME</mi><mi>t</mi></msub><mo>+</mo><msub><mi>β</mi><mn>4</mn></msub><msub><mi>VIX</mi><mi>t</mi></msub><mo>+</mo><msub><mi>β</mi><mn>5</mn></msub><msub><mi>COVID</mi><mi>t</mi></msub><mo>+</mo><msub><mi>ε</mi><mi>t</mi></msub></math></div><span class="eq-num">(2)</span></div>
           <p>donde α es la constante, β<sub>1</sub>, …, β<sub>5</sub> son los coeficientes por estimar y ε<sub><i>t</i></sub> es el término de error.</p>
@@ -578,13 +611,14 @@
     </div>
 
     <div class="example-full">
-      <div class="example-full-header" id="hdr-cap-tablas" onclick="toggleFull('cap-tablas')">
-        <span class="ex-badge" style="background:var(--teal-50);color:var(--teal-600)">Así se ve</span>
-        <span class="example-full-title">Tabla de resultados — Capítulo 3</span>
+      <div class="example-full-header" id="hdr-cap3-tabla" onclick="toggleFull('cap3-tabla')">
+        <span class="ex-badge" style="background:var(--amber-50);color:var(--amber-600)">Capítulo 3</span>
+        <span class="example-full-title">Análisis de resultados — tabla de resultados</span>
         <i class="ti ti-chevron-down ex-chevron"></i>
       </div>
-      <div class="example-full-body" id="cap-tablas">
+      <div class="example-full-body" id="cap3-tabla">
         <div class="apa-sample">
+          <span class="sample-tag">3.3.1 Descripción de los resultados · Tabla</span>
           <p>La Tabla 3 presenta los resultados de la estimación de la ecuación (2).</p>
           <div class="apa-cap-num">Tabla 3</div>
           <div class="apa-cap-title">Resultados de la estimación del volumen de futuros del dólar en el MexDer</div>
@@ -598,24 +632,24 @@
             </table>
           </div>
           <p class="apa-note"><i>Nota.</i> Elaboración propia con datos del Banco de México, el MexDer y el CME Group. Variable dependiente: logaritmo del volumen mensual de futuros del dólar en el MexDer. Errores estándar robustos de Newey-West. Cifras ilustrativas.</p>
-          <p>En el subperíodo 2009–2015, un aumento de un punto porcentual en la volatilidad condicional del tipo de cambio se asocia con un incremento de 4.2% en el volumen de futuros del dólar (β<sub>1</sub> = 0.042, <i>p</i> &lt; 0.01). En 2016–2022 el coeficiente se reduce a 0.011 y deja de ser significativo, mientras que el volumen de futuros del peso en el CME se relaciona negativamente con la actividad del MexDer (β<sub>3</sub> = −0.351, <i>p</i> &lt; 0.01).</p>
         </div>
       </div>
     </div>
 
     <div class="example-full">
-      <div class="example-full-header" id="hdr-cap-figuras" onclick="toggleFull('cap-figuras')">
-        <span class="ex-badge" style="background:var(--amber-50);color:var(--amber-600)">Así se ve</span>
-        <span class="example-full-title">Figura — Capítulo 2</span>
+      <div class="example-full-header" id="hdr-cap3-analisis" onclick="toggleFull('cap3-analisis')">
+        <span class="ex-badge" style="background:var(--pink-50);color:var(--pink-600)">Capítulo 3</span>
+        <span class="example-full-title">Análisis de resultados — los tres apartados</span>
         <i class="ti ti-chevron-down ex-chevron"></i>
       </div>
-      <div class="example-full-body" id="cap-figuras">
-        <div class="apa-sample">
-          <p>Como se observa en la Figura 1, el volumen anual de futuros negociado en el MexDer pasó de 48.4 millones en 2009 a 6.8 millones en 2022, una caída cercana a 86%.</p>
-          <div class="apa-cap-num">Figura 1</div>
-          <div class="apa-cap-title">Volumen anual de negociación de contratos de futuros en el MexDer, 2009 a 2022</div>
-          <div class="apa-fig"><svg viewBox="0 0 480 262" role="img" aria-label="Línea que muestra la caída del volumen anual de futuros en el MexDer de 48.4 millones en 2009 a 6.8 millones en 2022"><line x1="58" x2="470" y1="228.0" y2="228.0" stroke="currentColor" stroke-opacity="0.6" stroke-width="1"/><text x="50" y="232.0" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">0</text><line x1="58" x2="470" y1="186.4" y2="186.4" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="190.4" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">10</text><line x1="58" x2="470" y1="144.8" y2="144.8" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="148.8" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">20</text><line x1="58" x2="470" y1="103.2" y2="103.2" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="107.2" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">30</text><line x1="58" x2="470" y1="61.6" y2="61.6" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="65.6" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">40</text><line x1="58" x2="470" y1="20.0" y2="20.0" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="24.0" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">50</text><text x="58.0" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2009</text><text x="121.4" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2011</text><text x="184.8" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2013</text><text x="248.2" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2015</text><text x="311.5" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2017</text><text x="374.9" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2019</text><text x="438.3" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2021</text><polyline points="58.0,26.7 89.7,54.0 121.4,35.6 153.1,54.5 184.8,117.4 216.5,106.4 248.2,159.2 279.8,175.9 311.5,183.8 343.2,195.4 374.9,201.5 406.6,200.5 438.3,196.6 470.0,199.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="58.0" cy="26.7" r="2.6" fill="currentColor"><title>2009: 48.4 millones</title></circle><circle cx="89.7" cy="54.0" r="2.6" fill="currentColor"><title>2010: 41.8 millones</title></circle><circle cx="121.4" cy="35.6" r="2.6" fill="currentColor"><title>2011: 46.2 millones</title></circle><circle cx="153.1" cy="54.5" r="2.6" fill="currentColor"><title>2012: 41.7 millones</title></circle><circle cx="184.8" cy="117.4" r="2.6" fill="currentColor"><title>2013: 26.6 millones</title></circle><circle cx="216.5" cy="106.4" r="2.6" fill="currentColor"><title>2014: 29.2 millones</title></circle><circle cx="248.2" cy="159.2" r="2.6" fill="currentColor"><title>2015: 16.5 millones</title></circle><circle cx="279.8" cy="175.9" r="2.6" fill="currentColor"><title>2016: 12.5 millones</title></circle><circle cx="311.5" cy="183.8" r="2.6" fill="currentColor"><title>2017: 10.6 millones</title></circle><circle cx="343.2" cy="195.4" r="2.6" fill="currentColor"><title>2018: 7.8 millones</title></circle><circle cx="374.9" cy="201.5" r="2.6" fill="currentColor"><title>2019: 6.4 millones</title></circle><circle cx="406.6" cy="200.5" r="2.6" fill="currentColor"><title>2020: 6.6 millones</title></circle><circle cx="438.3" cy="196.6" r="2.6" fill="currentColor"><title>2021: 7.5 millones</title></circle><circle cx="470.0" cy="199.5" r="2.6" fill="currentColor"><title>2022: 6.8 millones</title></circle><text x="14" y="124" transform="rotate(-90 14 124)" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">Millones</text></svg></div>
-          <p class="apa-note"><i>Nota.</i> Elaboración propia con datos de [fuente de los datos] (año).</p>
+      <div class="example-full-body" id="cap3-analisis">
+        <div class="full-text">
+          <span class="el-label" style="color:var(--teal-600)">3.3.1 Descripción de los resultados</span>
+          <span class="hl" style="background:var(--teal-50);color:var(--teal-800)">En el subperíodo 2009–2015, un aumento de un punto porcentual en la volatilidad condicional del tipo de cambio se asocia con un incremento de 4.2% en el volumen de futuros del dólar (β<sub>1</sub> = 0.042, p &lt; 0.01). En el subperíodo 2016–2022 el coeficiente se reduce a 0.011 y deja de ser significativo, mientras que el volumen de futuros del peso en el CME se relaciona negativamente con la actividad del MexDer (β<sub>3</sub> = −0.351, p &lt; 0.01). El diferencial de tasas también pierde significancia en el segundo subperíodo.</span>
+          <span class="el-label" style="color:var(--blue-600)">3.3.2 Contraste con la literatura y el marco teórico</span>
+          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">El efecto positivo de la volatilidad sobre el volumen negociado entre 2009 y 2015 coincide con la teoría de la cobertura: cuando aumenta el riesgo cambiario, los agentes expuestos demandan más contratos de futuros para reducir la varianza de su posición (Johnson, 1960; Ederington, 1979). En cambio, la pérdida de significancia después de 2016 no se explica dentro de ese marco, que supone implícitamente que la cobertura se realiza en el mercado local. El coeficiente negativo del volumen en el CME sugiere que la demanda de cobertura no desapareció, sino que se trasladó a otros mercados, en un mercado cambiario global que opera mayoritariamente fuera de bolsa (BIS, 2022). Este resultado matiza la teoría: la relación entre volatilidad y volumen depende también de la competencia entre mercados.</span>
+          <span class="el-label" style="color:var(--amber-600)">3.3.3 Implicaciones de política pública y regulación</span>
+          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">Los resultados sugieren que la política financiera debería orientarse a la competitividad del mercado local de derivados más que a promover el uso de coberturas, cuya demanda ya existe. Para las autoridades financieras (Banco de México, Comisión Nacional Bancaria y de Valores y Secretaría de Hacienda y Crédito Público), las acciones posibles incluyen revisar los costos de transacción y los requisitos de margen frente a los de mercados externos, facilitar el acceso de inversionistas extranjeros y fortalecer el esquema de formadores de mercado. Un mercado local con mayor liquidez reduce la dependencia de contrapartes del exterior y mejora la formación de precios del peso.</span>
         </div>
       </div>
     </div>
@@ -861,7 +895,7 @@ const data = {
       { title:'Estructura del documento', tag:'Obligatorio · Cierre',
         desc:'La introducción cierra con un párrafo que describe cómo está organizado el documento. Es una convención académica que facilita la navegación del lector.',
         qs:['¿Se describe brevemente el contenido de cada capítulo?','¿El orden refleja una lógica de construcción argumentativa?','¿Es el último párrafo de la introducción?'],
-        ej:'Tres capítulos y conclusiones: (1) marco teórico de la cobertura con futuros; (2) evolución del mercado de derivados en México; (3) metodología y resultados; conclusiones, limitaciones y líneas futuras.' }
+        ej:'Tres capítulos y conclusiones: (1) marco teórico de la cobertura con futuros; (2) marco contextual del mercado de derivados en México; (3) metodología y análisis de resultados (descripción, contraste con la literatura e implicaciones de política); conclusiones, limitaciones y líneas futuras.' }
     ]
   },
   conclusiones: {
@@ -902,26 +936,34 @@ const data = {
     num:'#E6F1FB', numTxt:'#0C447C', tag:'#E6F1FB', tagTxt:'#185FA5', border:'#378ADD',
     exBg:'#E6F1FB', exTxt:'#0C447C',
     elements:[
-      { title:'Citas en el texto', tag:'Obligatorio · APA 7',
-        desc:'APA 7 usa el sistema autor-fecha. La cita parentética pone autor y año entre paréntesis al final de la idea; la cita narrativa integra el apellido en la oración y el año entre paréntesis. Con tres o más autores se escribe solo el primer apellido seguido de et al. desde la primera cita. Toda cita debe aparecer en la lista de referencias y viceversa.',
-        qs:['¿Todas las citas siguen el formato autor-fecha?','¿Escribes et al. desde la primera cita cuando hay tres o más autores?','¿Cada cita aparece en las referencias y cada referencia está citada?','¿Las citas textuales de 40 palabras o más van en bloque, con sangría y sin comillas?'],
+      { title:'Citas en el texto', tag:'Capítulo 1 · Marco teórico',
+        desc:'El marco teórico presenta las teorías y la evidencia empírica que sustentan tu hipótesis. Su herramienta principal es la cita: cada idea tomada de otro autor se cita en formato APA 7. APA 7 usa el sistema autor-fecha. La cita parentética pone autor y año entre paréntesis al final de la idea; la cita narrativa integra el apellido en la oración y el año entre paréntesis. Con tres o más autores se escribe solo el primer apellido seguido de et al. desde la primera cita. Toda cita debe aparecer en la lista de referencias y viceversa.',
+        qs:['¿Todas las citas siguen el formato autor-fecha?','¿Escribes et al. desde la primera cita cuando hay tres o más autores?','¿Cada cita aparece en las referencias y cada referencia está citada?','¿Las citas textuales llevan número de página?'],
         ej:'Parentética: «…para reducir la varianza de su riqueza (Johnson, 1960)». Narrativa: «De acuerdo con Ederington (1979), la efectividad de una cobertura se mide como…».' },
-      { title:'Ecuaciones', tag:'Obligatorio si aplica',
-        desc:'Escribe las ecuaciones con el editor de ecuaciones de Word (Insertar > Ecuación), nunca como imagen. Colócalas centradas en su propio renglón y numéralas a la derecha entre paréntesis; una tabla de dos columnas sin bordes facilita la alineación. Introdúcelas en el texto antes de que aparezcan, define cada símbolo inmediatamente después con «donde…» y refiérete a ellas por su número: «la ecuación (1)».',
-        qs:['¿La ecuación está hecha con el editor de ecuaciones y no como imagen?','¿Está centrada y numerada a la derecha entre paréntesis?','¿La introduces en el texto antes de que aparezca?','¿Defines cada símbolo después de la ecuación con «donde…»?','¿La numeración es consecutiva en todo el documento?'],
-        ej:'«La razón de cobertura de mínima varianza se obtiene con la ecuación (1): … (1), donde ΔS<sub>t</sub> es el cambio en el tipo de cambio de contado y ΔF<sub>t</sub> es el cambio en el precio del futuro.»' },
-      { title:'Tablas', tag:'Obligatorio · Formato APA',
-        desc:'Sobre la tabla va el número en negritas (Tabla 1) y, en el renglón siguiente, el título en cursiva, ambos alineados a la izquierda. Usa solo líneas horizontales (arriba y abajo del encabezado y al final), ninguna vertical. Debajo de la tabla va la nota: «Nota.» en cursiva, seguida de la fuente («Elaboración propia con datos de…»). Menciona cada tabla en el texto antes de que aparezca. Construye las tablas en Word o pégalas como tabla editable desde Excel, nunca como captura de pantalla. Si una tabla es muy ancha, colócala en una página horizontal, como la Tabla 1.',
+      { title:'Tablas', tag:'Capítulo 2 · Marco contextual',
+        desc:'El marco contextual describe el entorno del problema (institucional, histórico o de mercado) con hechos estilizados. Aquí empiezan a incorporarse tablas y figuras. Sobre la tabla va el número en negritas (Tabla 1) y, en el renglón siguiente, el título en cursiva, ambos alineados a la izquierda. Usa solo líneas horizontales (arriba y abajo del encabezado y al final), ninguna vertical. Debajo de la tabla va la nota: «Nota.» en cursiva, seguida de la fuente («Elaboración propia con datos de…»). Menciona cada tabla en el texto antes de que aparezca. Construye las tablas en Word o pégalas como tabla editable desde Excel, nunca como captura de pantalla. Si una tabla es muy ancha, colócala en una página horizontal, como la Tabla 1.',
         qs:['¿El número va en negritas y el título en cursiva, arriba de la tabla?','¿La tabla tiene solo líneas horizontales?','¿Debajo tiene una nota con la fuente?','¿La mencionas en el texto antes de que aparezca?','¿Es una tabla editable y no una captura de pantalla?'],
-        ej:'<b>Tabla 2</b> / <i>Variables del estudio y fuentes de información</i> / [tabla] / <i>Nota.</i> Elaboración propia.' },
-      { title:'Figuras', tag:'Obligatorio · Formato APA',
+        ej:'<b>Tabla 1</b> / <i>Volumen del mercado de derivados por tipo de activo, 2009 a 2013</i> / [tabla] / <i>Nota.</i> Elaboración propia con datos de [fuente] (año).' },
+      { title:'Figuras', tag:'Capítulo 2 · Marco contextual',
         desc:'Las figuras (gráficas, diagramas, mapas) siguen el mismo formato que las tablas: número en negritas (Figura 1), título en cursiva arriba y nota debajo. Inserta las gráficas como objetos de Excel o como imágenes de alta resolución, con ejes rotulados y unidades indicadas, y sin título dentro de la gráfica: el título va en el encabezado de la figura.',
-        qs:['¿El número va en negritas y el título en cursiva, arriba de la figura?','¿Los ejes tienen rótulos y unidades?','¿La gráfica no repite el título dentro de la imagen?','¿Debajo tiene una nota con la fuente?','¿La resolución permite leerla impresa?'],
+        qs:['¿El número va en negritas y el título en cursiva, arriba de la figura?','¿Los ejes tienen rótulos y unidades?','¿La gráfica no repite el título dentro de la imagen?','¿Debajo tiene una nota con la fuente?'],
         ej:'<b>Figura 1</b> / <i>Volumen anual de negociación de contratos de futuros en el MexDer, 2009 a 2022</i> / [gráfica] / <i>Nota.</i> Elaboración propia con datos de [fuente] (año).' },
-      { title:'Resultados de modelos', tag:'Capítulo de resultados',
-        desc:'Reporta los resultados de tus modelos o encuestas en tablas de elaboración propia, nunca como capturas de pantalla del software. Después de cada tabla, interpreta los coeficientes relevantes: signo, magnitud y significancia.',
-        qs:['¿Los resultados están en una tabla de elaboración propia?','¿Reportas coeficientes, significancia y número de observaciones?','¿Interpretas signo, magnitud y significancia de los coeficientes relevantes?','¿La interpretación se conecta con la hipótesis?'],
-        ej:'En 2009–2015, un aumento de un punto porcentual en la volatilidad condicional se asocia con un incremento de 4.2% en el volumen de futuros (β<sub>1</sub> = 0.042, p &lt; 0.01).' }
+      { title:'Ecuaciones', tag:'Capítulo 3 · Metodología',
+        desc:'Escribe las ecuaciones con el editor de ecuaciones de Word (Insertar > Ecuación), nunca como imagen. Colócalas centradas en su propio renglón y numéralas a la derecha entre paréntesis; una tabla de dos columnas sin bordes facilita la alineación. Introdúcelas en el texto antes de que aparezcan, define cada símbolo inmediatamente después con «donde…» y refiérete a ellas por su número: «la ecuación (1)». Numera las ecuaciones de forma consecutiva en todo el documento —(1), (2), (3)…— o por capítulo —(1.1), (1.2)…—. Elige una sola forma y respétala. Las ecuaciones que solo se mencionan de paso no necesitan número.',
+        qs:['¿La ecuación está hecha con el editor de ecuaciones y no como imagen?','¿Está centrada y numerada a la derecha entre paréntesis?','¿La introduces en el texto antes de que aparezca?','¿Defines cada símbolo después de la ecuación con «donde…»?','¿La numeración es consecutiva?'],
+        ej:'La volatilidad condicional se estima con un GARCH(1,1), ecuación (1); el volumen negociado, con la ecuación (2). Después de cada una: «donde h<sub>t</sub> es la varianza condicional…».' },
+      { title:'Análisis de resultados: descripción', tag:'Capítulo 3 · Apartado 1',
+        desc:'Describe lo que encontraste a partir de tu metodología: presenta las tablas o figuras de resultados e interpreta el signo, la magnitud y la significancia de los coeficientes relevantes. Reporta los resultados en tablas de elaboración propia, nunca como capturas de pantalla del software.',
+        qs:['¿Los resultados están en una tabla de elaboración propia?','¿Reportas coeficientes, significancia y número de observaciones?','¿Interpretas signo, magnitud y significancia de los coeficientes relevantes?'],
+        ej:'En 2009–2015, un aumento de un punto porcentual en la volatilidad condicional se asocia con un incremento de 4.2% en el volumen de futuros (β<sub>1</sub> = 0.042, p &lt; 0.01); en 2016–2022 el efecto deja de ser significativo.' },
+      { title:'Análisis de resultados: contraste con la literatura', tag:'Capítulo 3 · Apartado 2',
+        desc:'Compara tus hallazgos con lo que dicen la literatura y tu marco teórico: en qué coinciden, en qué no y por qué podría ser. Cita a los autores con los que contrastas: este apartado conecta el Capítulo 3 con el Capítulo 1.',
+        qs:['¿Señalas en qué coinciden tus resultados con la literatura y el marco teórico?','¿Señalas en qué difieren y propones por qué?','¿Citas a los autores con los que contrastas?'],
+        ej:'El efecto positivo de la volatilidad en 2009–2015 coincide con la teoría de la cobertura (Johnson, 1960; Ederington, 1979); su pérdida de significancia después de 2016 no se explica en ese marco y sugiere que la cobertura migró a otros mercados.' },
+      { title:'Análisis de resultados: política pública y regulación', tag:'Capítulo 3 · Apartado 3',
+        desc:'Explica qué implican tus resultados para la política pública o la regulación (o para las decisiones de empresas, bancos o inversionistas, según el tema). Las recomendaciones deben desprenderse de tus resultados, no de opiniones generales, y dirigirse a actores concretos.',
+        qs:['¿Las implicaciones se desprenden de tus resultados?','¿Identificas a qué autoridades o actores se dirigen?','¿Propones acciones concretas y no solo generales?'],
+        ej:'Más que promover el uso de coberturas, la política financiera debería mejorar la competitividad del MexDer: revisar costos de transacción y márgenes, facilitar el acceso de inversionistas extranjeros y fortalecer a los formadores de mercado.' }
     ]
   },
   articulo: {
@@ -1035,15 +1077,15 @@ const clItems = {
     {id:'i9',t:'Cierra con una descripción de la estructura del documento'}
   ],
   'capitulos-c':[
-    {id:'k1',t:'Todas las citas siguen el formato autor-fecha de APA 7'},
-    {id:'k2',t:'Cada cita aparece en las referencias y viceversa'},
-    {id:'k3',t:'Las ecuaciones están hechas con el editor de ecuaciones, centradas y numeradas a la derecha'},
-    {id:'k4',t:'Cada símbolo se define después de la ecuación'},
-    {id:'k5',t:'Tablas y figuras tienen número en negritas y título en cursiva arriba'},
-    {id:'k6',t:'Las tablas no tienen líneas verticales'},
-    {id:'k7',t:'Cada tabla y figura tiene una nota con la fuente'},
-    {id:'k8',t:'Cada tabla y figura se menciona en el texto antes de aparecer'},
-    {id:'k9',t:'Ningún resultado se presenta como captura de pantalla del software'}
+    {id:'k1',t:'Capítulo 1: todas las citas siguen el formato autor-fecha de APA 7 y aparecen en las referencias'},
+    {id:'k2',t:'Capítulo 2: tablas y figuras tienen número en negritas y título en cursiva arriba'},
+    {id:'k3',t:'Capítulo 2: las tablas no tienen líneas verticales y cada tabla o figura tiene nota con la fuente'},
+    {id:'k4',t:'Cada tabla y figura se menciona en el texto antes de aparecer'},
+    {id:'k5',t:'Capítulo 3: las ecuaciones están hechas con el editor, centradas y numeradas a la derecha'},
+    {id:'k6',t:'Capítulo 3: cada símbolo se define después de la ecuación'},
+    {id:'k7',t:'El análisis de resultados describe los hallazgos en tablas de elaboración propia'},
+    {id:'k8',t:'El análisis de resultados contrasta los hallazgos con la literatura y el marco teórico'},
+    {id:'k9',t:'El análisis de resultados plantea implicaciones de política pública o regulación'}
   ],
   'conclusiones-c':[
     {id:'c1',t:'Abre retomando el problema planteado en la introducción'},
