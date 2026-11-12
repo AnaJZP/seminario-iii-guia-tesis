@@ -275,7 +275,58 @@
       .tabs { gap: 4px; }
       .tab-btn { padding: 6px 13px; font-size: 12px; }
       .el-tag { display: none; }
+      .eq-math math { font-size: 14px; }
     }
+
+    /* DOWNLOAD CARD */
+    .download-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--bg-primary); border: 0.5px solid var(--border-medium);
+      border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.25rem;
+      text-decoration: none; color: var(--text-primary); transition: border-color 0.18s, background 0.18s;
+    }
+    .download-card:hover { border-color: var(--border-strong); background: var(--bg-secondary); }
+    .download-card .dc-icon { font-size: 30px; color: var(--blue-600); flex-shrink: 0; }
+    .download-card .dc-info { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .download-card .dc-name { font-size: 14px; font-weight: 500; }
+    .download-card .dc-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+    .download-card .dc-go { font-size: 18px; color: var(--text-muted); flex-shrink: 0; }
+
+    /* STRUCTURE */
+    .struct-group { margin-bottom: 1.25rem; }
+    .struct-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 0 0 0.5rem 0.25rem; }
+    .struct-title { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+    .struct-note { font-size: 11px; color: var(--text-muted); }
+    .struct-list { list-style: none; background: var(--bg-primary); border: 0.5px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+    .struct-item { display: flex; align-items: flex-start; gap: 12px; padding: 0.75rem 1.1rem; border-top: 0.5px solid var(--border-subtle); }
+    .struct-item:first-child { border-top: none; }
+    .struct-num { width: 24px; height: 24px; border-radius: 50%; background: var(--bg-secondary); color: var(--text-secondary); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .struct-body { flex: 1; min-width: 0; }
+    .struct-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+    .struct-desc { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; margin-top: 2px; }
+    .struct-link { font-size: 11px; padding: 3px 10px; border-radius: 12px; border: 0.5px solid var(--border-medium); background: none; color: var(--text-secondary); cursor: pointer; white-space: nowrap; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
+    .struct-link:hover { background: var(--bg-secondary); color: var(--text-primary); }
+
+    /* APA SAMPLES */
+    .apa-sample { font-family: 'Times New Roman', Times, serif; color: var(--text-primary); font-size: 15px; line-height: 1.6; }
+    .apa-sample p { margin-bottom: 0.6rem; }
+    .apa-cap-num { font-weight: 700; }
+    .apa-cap-title { font-style: italic; margin-bottom: 0.4rem; }
+    .apa-note { font-size: 13px; margin-top: 0.4rem; color: var(--text-secondary); }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .apa-table { border-collapse: collapse; width: 100%; min-width: 460px; font-size: 13.5px; }
+    .apa-table th, .apa-table td { padding: 4px 8px; text-align: center; font-weight: 400; }
+    .apa-table thead tr:first-child th { border-top: 1.5px solid var(--text-primary); }
+    .apa-table thead tr:last-child th { border-bottom: 1px solid var(--text-primary); }
+    .apa-table tbody tr:last-child td { border-bottom: 1.5px solid var(--text-primary); }
+    .apa-table td:first-child, .apa-table th:first-child { text-align: left; }
+    .apa-table .grp { border-bottom: 0.5px solid var(--border-strong); }
+    .eq-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; margin: 0.6rem 0 0.8rem; }
+    .eq-math { overflow-x: auto; text-align: center; }
+    .eq-math math { font-size: 17px; }
+    .eq-num { font-size: 15px; }
+    .apa-fig svg { width: 100%; max-width: 600px; height: auto; display: block; color: var(--text-primary); }
+    .sample-tag { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem; }
 
     /* RESOURCES GRID */
     .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
@@ -330,23 +381,92 @@
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Secciones de la guía">
-    <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('resumen', this)">Abstract / Resumen</button>
+    <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('estructura', this)">Estructura de la tesis</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('resumen', this)">Abstract / Resumen</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('palabras', this)">Palabras clave</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('intro', this)">Introducción</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('capitulos', this)">Capítulos: tablas, figuras y ecuaciones</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('conclusiones', this)">Conclusiones</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('checklist', this)">Lista de verificación</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('articulo', this)">📄 De tesis a artículo</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('perfiles', this)">🎓 Perfil investigador</button>
   </nav>
 
-  <!-- ═══════════ RESUMEN ═══════════ -->
-  <div class="section active" id="tab-resumen">
+  <!-- ═══════════ ESTRUCTURA ═══════════ -->
+  <div class="section active" id="tab-estructura">
     <div class="info-panel">
-      <p>El resumen (abstract) es la carta de presentación de tu tesis. En <strong>150–250 palabras</strong> debes comunicar la esencia completa de tu investigación. Cada oración cuenta y debe poder leerse de forma independiente al documento completo.</p>
+      <p>La tesis se entrega en el <strong>formato institucional del IPN</strong> con estilo <strong>APA 7</strong>. La plantilla de Word sigue exactamente el orden de esta guía: trae la portada con directores de tesis, las hojas institucionales, los índices automáticos, la numeración de páginas y un ejemplo de cada rubro.</p>
+    </div>
+    <a class="download-card" href="formato/FORMATO_TESIS_IPN_APA.docx" download>
+      <i class="ti ti-file-type-docx dc-icon"></i>
+      <span class="dc-info"><span class="dc-name">Plantilla de tesis IPN · APA 7 (.docx)</span><span class="dc-desc">Al abrirla, acepta «actualizar campos» para regenerar los índices. Los recuadros grises son instrucciones: bórralos en tu versión final.</span></span>
+      <i class="ti ti-download dc-go"></i>
+    </a>
+    <div class="hilo-banner">
+      <i class="ti ti-link"></i>
+      <p>La guía y la plantilla usan el mismo ejemplo: una tesis de Economía Financiera sobre <strong>volatilidad cambiaria y negociación de futuros del dólar en el MexDer (2009–2022)</strong>. Las cifras de resultados son ilustrativas.</p>
+    </div>
+
+    <div class="struct-group">
+      <div class="struct-head"><span class="struct-title">Preliminares</span><span class="struct-note">Números romanos · la portada no muestra número</span></div>
+      <ol class="struct-list">
+          <li class="struct-item"><span class="struct-num">1</span><div class="struct-body"><div class="struct-name">Portada</div><div class="struct-desc">Logotipos del IPN y de la ESE, título, grado, nombre del estudiante y <strong>directores de tesis</strong>.</div></div></li>
+          <li class="struct-item"><span class="struct-num">2</span><div class="struct-body"><div class="struct-name">Acta de registro de tema de tesis (SIP-13)</div><div class="struct-desc">Formato firmado y escaneado a página completa.</div></div></li>
+          <li class="struct-item"><span class="struct-num">3</span><div class="struct-body"><div class="struct-name">Acta de revisión de tesis (SIP-14)</div><div class="struct-desc">Firmada por la Comisión Revisora, escaneada a página completa.</div></div></li>
+          <li class="struct-item"><span class="struct-num">4</span><div class="struct-body"><div class="struct-name">Carta cesión de derechos</div><div class="struct-desc">Firmada y escaneada. Verifica con la Coordinación de Posgrado la versión vigente de cada formato.</div></div></li>
+          <li class="struct-item"><span class="struct-num">5</span><div class="struct-body"><div class="struct-name">Dedicatoria y agradecimientos</div><div class="struct-desc">La dedicatoria es opcional. En los agradecimientos menciona la beca SECIHTI (con tu CVU) y BEIFI, si aplica.</div></div></li>
+          <li class="struct-item"><span class="struct-num">6</span><div class="struct-body"><div class="struct-name">Índice, índice de tablas e índice de figuras</div><div class="struct-desc">Automáticos: en Word se actualizan con clic derecho &gt; Actualizar campos.</div></div></li>
+          <li class="struct-item"><span class="struct-num">7</span><div class="struct-body"><div class="struct-name">Resumen y abstract</div><div class="struct-desc">Un párrafo de 150 a 250 palabras, con palabras clave y clasificación JEL. El abstract es su traducción al inglés.</div></div><button class="struct-link" onclick="goTab('resumen')">Ver guía</button></li>
+          <li class="struct-item"><span class="struct-num">8</span><div class="struct-body"><div class="struct-name">Glosario y siglas</div><div class="struct-desc">Términos técnicos y siglas en orden alfabético.</div></div></li>
+          <li class="struct-item"><span class="struct-num">9</span><div class="struct-body"><div class="struct-name">Introducción</div><div class="struct-desc">Problema, antecedentes, objetivo e hipótesis, metodología, variables y estructura del documento.</div></div><button class="struct-link" onclick="goTab('intro')">Ver guía</button></li>
+      </ol>
+    </div>
+
+    <div class="struct-group">
+      <div class="struct-head"><span class="struct-title">Cuerpo</span><span class="struct-note">Números arábigos desde el Capítulo 1</span></div>
+      <ol class="struct-list" start="10">
+          <li class="struct-item"><span class="struct-num">10</span><div class="struct-body"><div class="struct-name">Capítulo 1. Marco teórico</div><div class="struct-desc">En la plantilla: cómo citar y cómo presentar ecuaciones.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
+          <li class="struct-item"><span class="struct-num">11</span><div class="struct-body"><div class="struct-name">Capítulo 2. El mercado de derivados en México</div><div class="struct-desc">En la plantilla: cómo presentar tablas y figuras.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
+          <li class="struct-item"><span class="struct-num">12</span><div class="struct-body"><div class="struct-name">Capítulo 3. Metodología y resultados</div><div class="struct-desc">Tabla de variables, especificación del modelo y tabla de resultados.</div></div><button class="struct-link" onclick="goTab('capitulos')">Ver guía</button></li>
+          <li class="struct-item"><span class="struct-num">13</span><div class="struct-body"><div class="struct-name">Conclusiones</div><div class="struct-desc">Cierre argumentativo: retoma el problema, confirma objetivo e hipótesis y remata con la aportación.</div></div><button class="struct-link" onclick="goTab('conclusiones')">Ver guía</button></li>
+      </ol>
+    </div>
+
+    <div class="struct-group">
+      <div class="struct-head"><span class="struct-title">Finales</span></div>
+      <ol class="struct-list" start="14">
+          <li class="struct-item"><span class="struct-num">14</span><div class="struct-body"><div class="struct-name">Referencias</div><div class="struct-desc">APA 7, en orden alfabético, con sangría francesa y DOI como enlace cuando exista.</div></div></li>
+          <li class="struct-item"><span class="struct-num">15</span><div class="struct-body"><div class="struct-name">Anexos</div><div class="struct-desc">Se identifican con letras (Anexo A, Anexo B…) y se citan en el texto.</div></div></li>
+      </ol>
+    </div>
+
+    <div class="info-panel">
+      <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:500;margin-bottom:10px"><i class="ti ti-ruler-2" style="vertical-align:-1px"></i> Formato general (ya configurado en la plantilla)</p>
+      <div class="table-scroll">
+      <table class="comparison-table">
+        <thead><tr><th>Elemento</th><th>Formato</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Letra</strong></td><td>Times New Roman 12 pt; 11 pt en tablas y 10 pt en notas</td></tr>
+          <tr><td><strong>Interlineado</strong></td><td>1.5 en el texto; sencillo dentro de tablas</td></tr>
+          <tr><td><strong>Márgenes</strong></td><td>2.5 cm superior e inferior; 3 cm izquierdo y derecho</td></tr>
+          <tr><td><strong>Título nivel 1</strong></td><td>Centrado, en negritas: Resumen, Introducción, Capítulo 1…</td></tr>
+          <tr><td><strong>Título nivel 2</strong></td><td>Alineado a la izquierda, en negritas y numerado: 1.1, 1.2…</td></tr>
+          <tr><td><strong>Título nivel 3</strong></td><td>Alineado a la izquierda, en negritas y cursivas: 1.2.1…</td></tr>
+          <tr><td><strong>Versalitas</strong></td><td>No se usan en APA 7</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ RESUMEN ═══════════ -->
+  <div class="section" id="tab-resumen">
+    <div class="info-panel">
+      <p>El resumen (abstract) es la carta de presentación de tu tesis. En <strong>150–250 palabras</strong>, en un solo párrafo sin sangría, debes comunicar la esencia completa de tu investigación. Cada oración cuenta y debe poder leerse de forma independiente al documento completo. El abstract es su traducción al inglés, con <em>keywords</em>.</p>
     </div>
     <div class="hilo-banner">
       <i class="ti ti-link"></i>
-      <p>El ejemplo de texto muestra una tesis sobre <strong>desigualdad regional y política fiscal en México (2010–2022)</strong>. El mismo hilo conductor se usa en la introducción y las conclusiones.</p>
+      <p>El ejemplo de texto muestra una tesis sobre <strong>volatilidad cambiaria y negociación de futuros del dólar en el MexDer (2009–2022)</strong>. El mismo hilo conductor se usa en la introducción, los capítulos y las conclusiones, y es el mismo de la plantilla de Word.</p>
     </div>
     <div class="example-full">
       <div class="example-full-header" id="hdr-resumen-full" onclick="toggleFull('resumen-full')">
@@ -357,15 +477,21 @@
       <div class="example-full-body" id="resumen-full">
         <div class="full-text">
           <span class="el-label" style="color:var(--blue-600)">① Objetivo</span>
-          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">El presente estudio tiene como objetivo analizar la relación entre la estructura de la recaudación fiscal federal y la desigualdad en el desarrollo económico regional de México durante el período 2010–2022.</span>
+          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">El presente estudio tiene como objetivo analizar la relación entre la volatilidad del tipo de cambio peso-dólar y el volumen de negociación de contratos de futuros del dólar en el Mercado Mexicano de Derivados (MexDer) durante el período 2009–2022.</span>
           <span class="el-label" style="color:var(--teal-600)">② Metodología</span>
-          <span class="hl" style="background:var(--teal-50);color:var(--teal-800)">Para ello se empleó una metodología cuantitativa de alcance correlacional, con base en datos del INEGI, la SHCP y el CONEVAL, utilizando modelos de regresión de datos de panel con efectos fijos para las 32 entidades federativas.</span>
+          <span class="hl" style="background:var(--teal-50);color:var(--teal-800)">Para ello se empleó una metodología cuantitativa de alcance correlacional-explicativo, con series mensuales del Banco de México, el MexDer y el CME Group; la volatilidad cambiaria se estimó con un modelo GARCH(1,1) y su efecto sobre el volumen negociado se evaluó mediante regresiones con errores estándar robustos (Newey-West) para dos subperíodos.</span>
           <span class="el-label" style="color:var(--amber-600)">③ Hallazgos</span>
-          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">Los resultados indican que un incremento del 10% en las participaciones federales per cápita se asocia con una reducción de 0.08 puntos en el coeficiente de Gini estatal, aunque este efecto es significativamente menor en entidades con alta dependencia de ingresos petroleros (β=−0.03, p&lt;0.05). La brecha de desarrollo entre el norte y el sur se amplió 14% en el período analizado, pese al crecimiento de las transferencias fiscales.</span>
+          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">Los resultados indican que, entre 2009 y 2015, un aumento de un punto porcentual en la volatilidad condicional se asoció con un incremento de 4.2% en el volumen de futuros (β = 0.042, p &lt; 0.01); sin embargo, entre 2016 y 2022 el efecto dejó de ser significativo (β = 0.011, p = 0.21), mientras que el volumen de futuros del peso en el CME mostró una relación negativa con la actividad del MexDer (β = −0.351, p &lt; 0.01). El volumen anual de futuros en el MexDer cayó alrededor de 86% en el período.</span>
           <span class="el-label" style="color:var(--pink-600)">④ Limitación</span>
-          <span class="hl" style="background:var(--pink-50);color:var(--pink-700)">Como principal limitación, el análisis no contempla la calidad del gasto ejercido a nivel subnacional, variable que podría moderar los efectos encontrados.</span>
+          <span class="hl" style="background:var(--pink-50);color:var(--pink-700)">Como principal limitación, no se dispone de información mensual sobre la cobertura cambiaria pactada en el mercado extrabursátil (OTC) local, que podría explicar parte de la sustitución observada.</span>
           <span class="el-label" style="color:var(--green-600)">⑤ Aportación</span>
-          <span class="hl" style="background:var(--green-50);color:var(--green-600)">Esta investigación contribuye al debate sobre el federalismo fiscal mexicano al evidenciar que la magnitud de las transferencias, por sí sola, es insuficiente para reducir la desigualdad regional en ausencia de criterios de eficiencia en el gasto subnacional.</span>
+          <span class="hl" style="background:var(--green-50);color:var(--green-600)">Esta investigación contribuye a la literatura sobre mercados de derivados en economías emergentes al mostrar que la contracción del MexDer no obedece a una menor demanda de cobertura, sino a la migración de la liquidez hacia mercados externos y extrabursátiles.</span>
+          <span class="el-label" style="color:var(--text-muted)">Palabras clave · Clasificación JEL</span>
+          <span>mercado de derivados; futuros del dólar; volatilidad cambiaria; cobertura de riesgo; México · G13, G15, F31</span>
+          <span class="el-label" style="color:var(--text-muted)">Abstract</span>
+          <span lang="en">This study aims to analyze the relationship between peso-dollar exchange rate volatility and the trading volume of U.S. dollar futures contracts on the Mexican Derivatives Exchange (MexDer) over the 2009–2022 period. A quantitative, correlational-explanatory approach was used, with monthly series from Banco de México, MexDer and CME Group; exchange rate volatility was estimated with a GARCH(1,1) model, and its effect on trading volume was assessed through regressions with robust (Newey-West) standard errors for two subperiods. Results show that, between 2009 and 2015, a one-percentage-point increase in conditional volatility was associated with a 4.2% rise in futures volume (β = 0.042, p &lt; 0.01); however, between 2016 and 2022 the effect was no longer significant (β = 0.011, p = 0.21), while peso futures volume on the CME was negatively related to MexDer activity (β = −0.351, p &lt; 0.01). Annual futures volume on MexDer fell by about 86% over the period. The main limitation is the lack of monthly data on currency hedging arranged in the local over-the-counter (OTC) market. This research contributes to the literature on derivatives markets in emerging economies by showing that the contraction of MexDer is not driven by lower hedging demand, but by the migration of liquidity to foreign and OTC markets.</span>
+          <span class="el-label" style="color:var(--text-muted)">Keywords</span>
+          <span lang="en">derivatives market; dollar futures; exchange rate volatility; hedging; Mexico</span>
         </div>
       </div>
     </div>
@@ -379,7 +505,7 @@
     </div>
     <div class="hilo-banner">
       <i class="ti ti-link"></i>
-      <p>Palabras clave para la tesis de muestra: <strong>federalismo fiscal; desigualdad regional; desarrollo económico; transferencias intergubernamentales; México</strong></p>
+      <p>Palabras clave para la tesis de muestra: <strong>mercado de derivados; futuros del dólar; volatilidad cambiaria; cobertura de riesgo; México</strong>. Clasificación JEL: <strong>G13, G15, F31</strong>. En inglés: <em>derivatives market; dollar futures; exchange rate volatility; hedging; Mexico</em>.</p>
     </div>
     <div class="elements-grid" id="palabras-elements"></div>
   </div>
@@ -391,7 +517,7 @@
     </div>
     <div class="hilo-banner">
       <i class="ti ti-link"></i>
-      <p>La introducción de muestra sigue el mismo hilo: <strong>desigualdad regional y política fiscal en México</strong>. Observa cómo cada elemento se encadena con el siguiente hasta llegar a la estructura del documento.</p>
+      <p>La introducción de muestra sigue el mismo hilo: <strong>volatilidad cambiaria y negociación de futuros del dólar en el MexDer (2009–2022)</strong>. Observa cómo cada elemento se encadena con el siguiente hasta llegar a la estructura del documento.</p>
     </div>
     <div class="example-full">
       <div class="example-full-header" id="hdr-intro-full" onclick="toggleFull('intro-full')">
@@ -402,21 +528,99 @@
       <div class="example-full-body" id="intro-full">
         <div class="full-text">
           <span class="el-label" style="color:var(--amber-600)">① Planteamiento del problema</span>
-          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">México es uno de los países con mayor desigualdad regional de la OCDE: el PIB per cápita de Nuevo León triplica al de Chiapas (INEGI, 2022), y esta brecha no ha mostrado una tendencia sostenida de cierre en las últimas dos décadas, pese a los incrementos sostenidos en las transferencias fiscales federales.</span> Este fenómeno representa un desafío estructural para la cohesión social y la viabilidad del pacto federal mexicano, en tanto que las políticas redistributivas parecen no alcanzar los efectos esperados en términos de convergencia económica territorial.
+          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">El peso mexicano es una de las monedas de economías emergentes con mayor volumen de negociación en el mercado cambiario global (Bank for International Settlements [BIS], 2022); sin embargo, el volumen anual de contratos de futuros negociados en el Mercado Mexicano de Derivados (MexDer) cayó alrededor de 86% entre 2009 y 2022, aun en episodios de alta volatilidad cambiaria como las elecciones estadounidenses de 2016 o la pandemia de COVID-19 en 2020. Esta paradoja es relevante porque un mercado local de derivados profundo y líquido permite a empresas, bancos e inversionistas cubrir su exposición cambiaria a menor costo y con menor riesgo de contraparte.</span>
           <span class="el-label" style="color:var(--teal-600)">② Contexto y antecedentes</span>
-          La desigualdad regional ha sido ampliamente documentada en la literatura internacional. <span class="hl" style="background:var(--teal-50);color:var(--teal-800)">Organismos como la CEPAL (2020) y el Banco Mundial (2021) han señalado que los esquemas de transferencias intergubernamentales en América Latina tienden a reproducir las asimetrías existentes cuando no se vinculan a criterios de desempeño en el gasto.</span> En el caso mexicano, autores como Sobarzo (2018) y Chávez y Fonseca (2021) analizaron la composición del Fondo General de Participaciones, identificando sesgos que favorecen a entidades con mayor capacidad administrativa. Sin embargo, estos estudios no incorporan las modificaciones al sistema de coordinación fiscal derivadas de la pandemia de COVID-19, lo que deja un vacío analítico relevante para el período 2014–2022.
+          <span class="hl" style="background:var(--teal-50);color:var(--teal-800)">La teoría de la cobertura sostiene que los agentes con exposición en el mercado de contado toman posiciones en futuros para reducir la varianza de su riqueza (Johnson, 1960), y que la efectividad de esa cobertura puede medirse como la proporción de la varianza que se elimina (Ederington, 1979). Bajo este enfoque, una mayor volatilidad debería traducirse en mayor demanda de cobertura y, por lo tanto, en mayor volumen negociado. No obstante, la evidencia para México se ha concentrado en la eficiencia de cobertura de los contratos del MexDer y ha prestado poca atención a la competencia de mercados externos, como el CME Group, y del mercado extrabursátil, lo que deja un vacío para explicar la contracción del mercado local después de 2015.</span>
           <span class="el-label" style="color:var(--blue-600)">③ Objetivo e hipótesis</span>
-          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">Esta investigación tiene como objetivo analizar la relación entre la estructura de la recaudación fiscal federal y la desigualdad en el desarrollo económico regional de México durante el período 2010–2022.</span> La hipótesis de trabajo sostiene que <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">un mayor volumen de participaciones federales per cápita no reduce significativamente la brecha de desarrollo regional en ausencia de mecanismos de eficiencia en el gasto subnacional.</span>
+          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">Esta investigación tiene como objetivo analizar la relación entre la volatilidad del tipo de cambio peso-dólar y el volumen de negociación de contratos de futuros del dólar en el MexDer durante el período 2009–2022. La hipótesis de trabajo sostiene que la volatilidad cambiaria incrementa el volumen de futuros del dólar en el MexDer, pero que este efecto se ha debilitado conforme la cobertura migra hacia el CME y hacia el mercado extrabursátil.</span>
           <span class="el-label" style="color:var(--pink-600)">④ Metodología general</span>
-          <span class="hl" style="background:var(--pink-50);color:var(--pink-700)">La investigación adopta un enfoque cuantitativo de alcance correlacional. Se construye una base de datos de panel para las 32 entidades federativas con información del INEGI, la SHCP y el CONEVAL (2010–2022). El análisis se realiza mediante modelos de regresión con efectos fijos, controlando por variables estructurales como el nivel de urbanización, la tasa de informalidad laboral y el índice de marginación.</span>
+          <span class="hl" style="background:var(--pink-50);color:var(--pink-700)">La investigación adopta un enfoque cuantitativo de alcance correlacional-explicativo. Se construye una base de datos de series de tiempo mensuales (2009–2022) con información del Banco de México, el MexDer y el CME Group. La volatilidad condicional del tipo de cambio se estima con un modelo GARCH(1,1) y su efecto sobre el volumen negociado se evalúa con regresiones lineales con errores estándar robustos (Newey-West), estimadas para el período completo y para los subperíodos 2009–2015 y 2016–2022.</span>
           <span class="el-label" style="color:var(--amber-600)">⑤ Variables</span>
-          La variable dependiente es el coeficiente de Gini del ingreso per cápita estatal. <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">Las variables independientes incluyen: participaciones federales per cápita, aportaciones del FAIS, recaudación fiscal propia de los estados y composición del gasto público subnacional.</span>
+          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">La variable dependiente es el logaritmo del volumen mensual de contratos de futuros del dólar negociados en el MexDer. Las variables independientes son la volatilidad condicional del tipo de cambio FIX, el diferencial entre la TIIE y la tasa de fondos federales de Estados Unidos y el logaritmo del volumen de futuros del peso en el CME; como variables de control se incluyen el índice VIX y una variable dicotómica para la pandemia de COVID-19.</span>
           <span class="el-label" style="color:var(--green-600)">⑥ Estructura del documento</span>
-          <span class="hl" style="background:var(--green-50);color:var(--green-600)">El documento se organiza en cinco capítulos: el primero presenta el marco teórico sobre federalismo fiscal y convergencia regional; el segundo describe el diseño metodológico y las fuentes de información; el tercero expone los resultados del análisis econométrico; el cuarto discute los hallazgos en el contexto de la política fiscal mexicana; y el quinto contiene las conclusiones, limitaciones y líneas futuras de investigación.</span>
+          <span class="hl" style="background:var(--green-50);color:var(--green-600)">El documento se organiza en tres capítulos y un apartado de conclusiones. El Capítulo 1 presenta el marco teórico sobre la cobertura con futuros; el Capítulo 2 describe la evolución del mercado de derivados en México; el Capítulo 3 expone la metodología, las variables y los resultados de la estimación; finalmente, las conclusiones discuten los hallazgos, las limitaciones y las líneas futuras de investigación.</span>
         </div>
       </div>
     </div>
     <div class="elements-grid" id="intro-elements"></div>
+  </div>
+
+  <!-- ═══════════ CAPÍTULOS ═══════════ -->
+  <div class="section" id="tab-capitulos">
+    <div class="info-panel">
+      <p>El contenido de cada capítulo lo trabajas con tus directores de tesis. Aquí solo se explica cómo presentar los elementos que más se revisan en APA 7: <strong>citas, ecuaciones, tablas y figuras</strong>. Cada capítulo inicia con un párrafo que presenta su propósito y su relación con el objetivo de la investigación.</p>
+    </div>
+    <div class="hilo-banner">
+      <i class="ti ti-link"></i>
+      <p>Los ejemplos salen de los capítulos de la plantilla: <strong>Capítulo 1</strong> (marco teórico) → citas y ecuaciones; <strong>Capítulo 2</strong> (mercado de derivados en México) → tablas y figuras; <strong>Capítulo 3</strong> (metodología y resultados) → tabla de variables, modelo y tabla de resultados.</p>
+    </div>
+
+    <div class="example-full">
+      <div class="example-full-header" id="hdr-cap-ecuaciones" onclick="toggleFull('cap-ecuaciones')">
+        <span class="ex-badge" style="background:var(--blue-50);color:var(--blue-600)">Así se ve</span>
+        <span class="example-full-title">Citas y ecuaciones — Capítulos 1 y 3</span>
+        <i class="ti ti-chevron-down ex-chevron"></i>
+      </div>
+      <div class="example-full-body" id="cap-ecuaciones">
+        <div class="apa-sample">
+          <span class="sample-tag">Citas</span>
+          <p><strong>Parentética:</strong> los agentes con exposición en el mercado de contado toman posiciones en futuros para reducir la varianza de su riqueza (Johnson, 1960).</p>
+          <p><strong>Narrativa:</strong> de acuerdo con Ederington (1979), la efectividad de una cobertura se mide como la proporción de la varianza de la posición que se elimina al cubrirla.</p>
+          <span class="sample-tag" style="margin-top:0.6rem">Ecuaciones</span>
+          <p>La razón de cobertura de mínima varianza, <i>h</i>*, es la proporción de la posición de contado que debe cubrirse con futuros para minimizar el riesgo (Johnson, 1960), y se obtiene con la ecuación (1):</p>
+          <div class="eq-row"><div class="eq-math"><math display="block"><msup><mi>h</mi><mo>*</mo></msup><mo>=</mo><mfrac><mrow><mi mathvariant="normal">Cov</mi><mo>(</mo><mi mathvariant="normal">Δ</mi><msub><mi>S</mi><mi>t</mi></msub><mo>,</mo><mi mathvariant="normal">Δ</mi><msub><mi>F</mi><mi>t</mi></msub><mo>)</mo></mrow><mrow><mi mathvariant="normal">Var</mi><mo>(</mo><mi mathvariant="normal">Δ</mi><msub><mi>F</mi><mi>t</mi></msub><mo>)</mo></mrow></mfrac></math></div><span class="eq-num">(1)</span></div>
+          <p>donde Δ<i>S<sub>t</sub></i> es el cambio en el tipo de cambio de contado y Δ<i>F<sub>t</sub></i> es el cambio en el precio del contrato de futuros del dólar en el período <i>t</i>.</p>
+          <p>La relación entre la volatilidad cambiaria y el volumen negociado se estima con la ecuación (2):</p>
+          <div class="eq-row"><div class="eq-math"><math display="block"><mi>ln</mi><mo>&#x2061;</mo><mspace width="0.2em"></mspace><msub><mi>VOL</mi><mi>t</mi></msub><mo>=</mo><mi>α</mi><mo>+</mo><msub><mi>β</mi><mn>1</mn></msub><msubsup><mi>σ</mi><mi>t</mi><mi>FX</mi></msubsup><mo>+</mo><msub><mi>β</mi><mn>2</mn></msub><msub><mi>DIF</mi><mi>t</mi></msub><mo>+</mo><msub><mi>β</mi><mn>3</mn></msub><mi>ln</mi><mo>&#x2061;</mo><mspace width="0.2em"></mspace><msub><mi>CME</mi><mi>t</mi></msub><mo>+</mo><msub><mi>β</mi><mn>4</mn></msub><msub><mi>VIX</mi><mi>t</mi></msub><mo>+</mo><msub><mi>β</mi><mn>5</mn></msub><msub><mi>COVID</mi><mi>t</mi></msub><mo>+</mo><msub><mi>ε</mi><mi>t</mi></msub></math></div><span class="eq-num">(2)</span></div>
+          <p>donde α es la constante, β<sub>1</sub>, …, β<sub>5</sub> son los coeficientes por estimar y ε<sub><i>t</i></sub> es el término de error.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-full">
+      <div class="example-full-header" id="hdr-cap-tablas" onclick="toggleFull('cap-tablas')">
+        <span class="ex-badge" style="background:var(--teal-50);color:var(--teal-600)">Así se ve</span>
+        <span class="example-full-title">Tabla de resultados — Capítulo 3</span>
+        <i class="ti ti-chevron-down ex-chevron"></i>
+      </div>
+      <div class="example-full-body" id="cap-tablas">
+        <div class="apa-sample">
+          <p>La Tabla 3 presenta los resultados de la estimación de la ecuación (2).</p>
+          <div class="apa-cap-num">Tabla 3</div>
+          <div class="apa-cap-title">Resultados de la estimación del volumen de futuros del dólar en el MexDer</div>
+          <div class="table-scroll">
+            <table class="apa-table">
+              <thead>
+                <tr><th rowspan="2">Variable</th><th colspan="2" class="grp">2009–2022</th><th colspan="2" class="grp">2009–2015</th><th colspan="2" class="grp">2016–2022</th></tr>
+                <tr><th>Coef.</th><th>Valor-p</th><th>Coef.</th><th>Valor-p</th><th>Coef.</th><th>Valor-p</th></tr>
+              </thead>
+              <tbody><tr><td><i>Constante</i></td><td>9.812</td><td>0.000</td><td>9.405</td><td>0.000</td><td>10.127</td><td>0.000</td></tr><tr><td><i>σ<sub>t</sub><sup>FX</sup></i></td><td>0.027</td><td>0.004</td><td>0.042</td><td>0.001</td><td>0.011</td><td>0.214</td></tr><tr><td><i>DIF<sub>t</sub></i></td><td>0.065</td><td>0.031</td><td>0.081</td><td>0.012</td><td>0.038</td><td>0.187</td></tr><tr><td><i>ln CME<sub>t</sub></i></td><td>−0.284</td><td>0.009</td><td>−0.142</td><td>0.098</td><td>−0.351</td><td>0.003</td></tr><tr><td><i>VIX<sub>t</sub></i></td><td>0.008</td><td>0.046</td><td>0.012</td><td>0.020</td><td>0.005</td><td>0.311</td></tr><tr><td><i>COVID<sub>t</sub></i></td><td>−0.096</td><td>0.157</td><td>—</td><td>—</td><td>−0.088</td><td>0.204</td></tr><tr><td>R<sup>2</sup> ajustado</td><td colspan="2">0.71</td><td colspan="2">0.64</td><td colspan="2">0.58</td></tr><tr><td>Observaciones</td><td colspan="2">168</td><td colspan="2">84</td><td colspan="2">84</td></tr></tbody>
+            </table>
+          </div>
+          <p class="apa-note"><i>Nota.</i> Elaboración propia con datos del Banco de México, el MexDer y el CME Group. Variable dependiente: logaritmo del volumen mensual de futuros del dólar en el MexDer. Errores estándar robustos de Newey-West. Cifras ilustrativas.</p>
+          <p>En el subperíodo 2009–2015, un aumento de un punto porcentual en la volatilidad condicional del tipo de cambio se asocia con un incremento de 4.2% en el volumen de futuros del dólar (β<sub>1</sub> = 0.042, <i>p</i> &lt; 0.01). En 2016–2022 el coeficiente se reduce a 0.011 y deja de ser significativo, mientras que el volumen de futuros del peso en el CME se relaciona negativamente con la actividad del MexDer (β<sub>3</sub> = −0.351, <i>p</i> &lt; 0.01).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-full">
+      <div class="example-full-header" id="hdr-cap-figuras" onclick="toggleFull('cap-figuras')">
+        <span class="ex-badge" style="background:var(--amber-50);color:var(--amber-600)">Así se ve</span>
+        <span class="example-full-title">Figura — Capítulo 2</span>
+        <i class="ti ti-chevron-down ex-chevron"></i>
+      </div>
+      <div class="example-full-body" id="cap-figuras">
+        <div class="apa-sample">
+          <p>Como se observa en la Figura 1, el volumen anual de futuros negociado en el MexDer pasó de 48.4 millones en 2009 a 6.8 millones en 2022, una caída cercana a 86%.</p>
+          <div class="apa-cap-num">Figura 1</div>
+          <div class="apa-cap-title">Volumen anual de negociación de contratos de futuros en el MexDer, 2009 a 2022</div>
+          <div class="apa-fig"><svg viewBox="0 0 480 262" role="img" aria-label="Línea que muestra la caída del volumen anual de futuros en el MexDer de 48.4 millones en 2009 a 6.8 millones en 2022"><line x1="58" x2="470" y1="228.0" y2="228.0" stroke="currentColor" stroke-opacity="0.6" stroke-width="1"/><text x="50" y="232.0" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">0</text><line x1="58" x2="470" y1="186.4" y2="186.4" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="190.4" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">10</text><line x1="58" x2="470" y1="144.8" y2="144.8" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="148.8" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">20</text><line x1="58" x2="470" y1="103.2" y2="103.2" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="107.2" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">30</text><line x1="58" x2="470" y1="61.6" y2="61.6" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="65.6" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">40</text><line x1="58" x2="470" y1="20.0" y2="20.0" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/><text x="50" y="24.0" text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.7">50</text><text x="58.0" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2009</text><text x="121.4" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2011</text><text x="184.8" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2013</text><text x="248.2" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2015</text><text x="311.5" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2017</text><text x="374.9" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2019</text><text x="438.3" y="246" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">2021</text><polyline points="58.0,26.7 89.7,54.0 121.4,35.6 153.1,54.5 184.8,117.4 216.5,106.4 248.2,159.2 279.8,175.9 311.5,183.8 343.2,195.4 374.9,201.5 406.6,200.5 438.3,196.6 470.0,199.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="58.0" cy="26.7" r="2.6" fill="currentColor"><title>2009: 48.4 millones</title></circle><circle cx="89.7" cy="54.0" r="2.6" fill="currentColor"><title>2010: 41.8 millones</title></circle><circle cx="121.4" cy="35.6" r="2.6" fill="currentColor"><title>2011: 46.2 millones</title></circle><circle cx="153.1" cy="54.5" r="2.6" fill="currentColor"><title>2012: 41.7 millones</title></circle><circle cx="184.8" cy="117.4" r="2.6" fill="currentColor"><title>2013: 26.6 millones</title></circle><circle cx="216.5" cy="106.4" r="2.6" fill="currentColor"><title>2014: 29.2 millones</title></circle><circle cx="248.2" cy="159.2" r="2.6" fill="currentColor"><title>2015: 16.5 millones</title></circle><circle cx="279.8" cy="175.9" r="2.6" fill="currentColor"><title>2016: 12.5 millones</title></circle><circle cx="311.5" cy="183.8" r="2.6" fill="currentColor"><title>2017: 10.6 millones</title></circle><circle cx="343.2" cy="195.4" r="2.6" fill="currentColor"><title>2018: 7.8 millones</title></circle><circle cx="374.9" cy="201.5" r="2.6" fill="currentColor"><title>2019: 6.4 millones</title></circle><circle cx="406.6" cy="200.5" r="2.6" fill="currentColor"><title>2020: 6.6 millones</title></circle><circle cx="438.3" cy="196.6" r="2.6" fill="currentColor"><title>2021: 7.5 millones</title></circle><circle cx="470.0" cy="199.5" r="2.6" fill="currentColor"><title>2022: 6.8 millones</title></circle><text x="14" y="124" transform="rotate(-90 14 124)" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">Millones</text></svg></div>
+          <p class="apa-note"><i>Nota.</i> Elaboración propia con datos de [fuente de los datos] (año).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="elements-grid" id="capitulos-elements"></div>
   </div>
 
   <!-- ═══════════ CONCLUSIONES ═══════════ -->
@@ -426,7 +630,7 @@
     </div>
     <div class="hilo-banner">
       <i class="ti ti-link"></i>
-      <p>Las conclusiones cierran el círculo: retoman el mismo problema de la introducción, confirman el objetivo y la hipótesis, y rematan con la aportación al debate sobre <strong>federalismo fiscal y desigualdad regional en México</strong>.</p>
+      <p>Las conclusiones cierran el círculo: retoman el mismo problema de la introducción, confirman el objetivo y la hipótesis, y rematan con la aportación al debate sobre <strong>la profundidad del mercado de derivados en México</strong>.</p>
     </div>
     <div class="example-full">
       <div class="example-full-header" id="hdr-conclusiones-full" onclick="toggleFull('conclusiones-full')">
@@ -437,19 +641,19 @@
       <div class="example-full-body" id="conclusiones-full">
         <div class="full-text">
           <span class="el-label" style="color:var(--pink-600)">① Retoma del problema</span>
-          <span class="hl" style="background:var(--pink-50);color:var(--pink-700)">Esta investigación partió de una paradoja documentada en la evidencia empírica: pese al crecimiento sostenido de las transferencias fiscales federales, la brecha de desarrollo económico entre las entidades federativas mexicanas no mostró una tendencia significativa de cierre.</span> Este hallazgo pone en cuestión la lógica redistributiva implícita en el diseño del sistema de coordinación fiscal vigente.
+          <span class="hl" style="background:var(--pink-50);color:var(--pink-700)">Esta investigación partió de una paradoja: aunque el peso mexicano es una de las monedas emergentes más negociadas del mundo y enfrentó episodios de alta volatilidad, el volumen de futuros negociado en el MexDer se redujo alrededor de 86% entre 2009 y 2022. Este hecho cuestiona la idea de que la demanda de cobertura cambiaria se canaliza de forma natural hacia el mercado local de derivados.</span>
           <span class="el-label" style="color:var(--blue-600)">② Confirmación del objetivo</span>
-          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">El objetivo de analizar la relación entre la estructura de la recaudación fiscal federal y la desigualdad regional fue alcanzado satisfactoriamente.</span> El análisis econométrico de panel para las 32 entidades (2010–2022) permitió identificar con precisión estadística los mecanismos a través de los cuales las transferencias fiscales interactúan con las condiciones estructurales de desarrollo de cada estado.
+          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">El objetivo de analizar la relación entre la volatilidad del tipo de cambio peso-dólar y el volumen de negociación de futuros del dólar en el MexDer se alcanzó. La combinación de un modelo GARCH(1,1) con regresiones por subperíodos permitió distinguir cómo cambió esa relación antes y después de 2016.</span>
           <span class="el-label" style="color:var(--teal-600)">③ Comprobación de la hipótesis</span>
-          <span class="hl" style="background:var(--teal-50);color:var(--teal-800)">La hipótesis fue confirmada: un mayor volumen de participaciones federales per cápita no se traduce en reducción significativa de la desigualdad regional cuando el gasto subnacional presenta bajos niveles de eficiencia (β=−0.03, p&lt;0.05). Las entidades con indicadores de gestión pública por encima de la mediana mostraron un efecto redistributivo cuatro veces mayor por cada peso adicional recibido en participaciones.</span>
+          <span class="hl" style="background:var(--teal-50);color:var(--teal-800)">La hipótesis se confirmó: entre 2009 y 2015, un aumento de un punto porcentual en la volatilidad condicional se asoció con un incremento de 4.2% en el volumen negociado (β = 0.042, p &lt; 0.01), mientras que entre 2016 y 2022 el efecto dejó de ser significativo (β = 0.011, p = 0.21).</span>
           <span class="el-label" style="color:var(--amber-600)">④ Hallazgos principales</span>
-          Primero, <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">la brecha Norte-Sur se amplió 14% en el período analizado, siendo las entidades del sureste las que mostraron la menor capacidad de absorción productiva de las transferencias recibidas.</span> Segundo, las participaciones del FAIS presentaron el mayor potencial redistributivo, aunque su impacto fue heterogéneo según el nivel de marginación municipal. Tercero, la recaudación fiscal propia de los estados resultó ser el predictor más robusto del nivel de desarrollo regional, por encima de cualquier tipo de transferencia federal.
+          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">Primero, la sensibilidad del volumen del MexDer a la volatilidad cambiaria se redujo a una cuarta parte en el segundo subperíodo. Segundo, el volumen de futuros del peso en el CME se relaciona negativamente con la actividad del MexDer (β = −0.351, p &lt; 0.01), lo que es consistente con una sustitución entre mercados. Tercero, el diferencial de tasas de interés perdió significancia después de 2016, lo que sugiere que las estrategias de carry trade dejaron de canalizarse por el mercado local.</span>
           <span class="el-label" style="color:var(--blue-600)">⑤ Limitaciones</span>
-          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">El estudio presenta dos limitaciones principales: la ausencia de indicadores estandarizados de calidad del gasto subnacional para todo el período, y la omisión de factores geopolíticos y climáticos que inciden en las condiciones de desarrollo de las regiones del sur del país.</span>
+          <span class="hl" style="background:var(--blue-50);color:var(--blue-800)">El estudio presenta dos limitaciones principales: la falta de información mensual sobre la cobertura cambiaria pactada en el mercado extrabursátil local y el uso de datos agregados, que no permiten identificar el tipo de participante (cobertura o especulación) detrás de cada contrato.</span>
           <span class="el-label" style="color:var(--green-600)">⑥ Líneas futuras de investigación</span>
-          <span class="hl" style="background:var(--green-50);color:var(--green-600)">Se recomienda explorar la institucionalidad local como variable moderadora del efecto redistributivo de las transferencias, y replicar el análisis incorporando datos del período post-pandemia (2023–2025) para evaluar si las modificaciones al sistema de coordinación fiscal alteraron los patrones identificados.</span>
+          <span class="hl" style="background:var(--green-50);color:var(--green-600)">Se recomienda analizar, con datos por tipo de participante, si la migración hacia el CME responde a costos de transacción, a requisitos de margen o al acceso de inversionistas extranjeros, así como extender el análisis a los contratos de futuros sobre la TIIE y sobre el Índice de Precios y Cotizaciones.</span>
           <span class="el-label" style="color:var(--coral-600)">⑦ Aportación final — el broche de oro</span>
-          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">La aportación central de esta investigación consiste en demostrar que el problema de la desigualdad regional en México no es de insuficiencia en las transferencias, sino de desconexión entre el volumen del gasto federal descentralizado y la capacidad institucional de los gobiernos subnacionales para convertir esos recursos en desarrollo económico territorial. Esta evidencia ofrece un argumento empírico sólido para reorientar el debate de política pública: en lugar de incrementar el monto de las participaciones, la prioridad debería ser fortalecer las capacidades de gestión fiscal local como condición necesaria para que el federalismo mexicano cumpla su función redistributiva.</span>
+          <span class="hl" style="background:var(--amber-50);color:var(--amber-800)">La aportación central de esta investigación consiste en mostrar que el problema del MexDer no es la falta de demanda de cobertura, sino su incapacidad para retener la liquidez frente a mercados externos y extrabursátiles. Esta evidencia reorienta el debate de política financiera: más que promover el uso de derivados, la prioridad es reducir los costos y las barreras que hacen menos competitivo al mercado local.</span>
         </div>
       </div>
     </div>
@@ -488,9 +692,9 @@
       <div class="example-full-body" id="articulo-full">
         <div class="cover-letter">
           <p>Estimado/a Editor/a:</p>
-          <p>Le envío el manuscrito titulado <span class="cl-placeholder">"Transferencias fiscales y desigualdad regional en México: evidencia de panel para 32 entidades federativas (2010–2022)"</span> para su consideración en <span class="cl-placeholder">[Nombre de la Revista]</span>.</p>
-          <p>El artículo analiza la relación entre la estructura de la recaudación fiscal federal y la desigualdad en el desarrollo económico regional en México, utilizando modelos de regresión de datos de panel con efectos fijos. Los resultados demuestran que un mayor volumen de transferencias per cápita <strong>no reduce significativamente</strong> la brecha regional en ausencia de mecanismos de eficiencia en el gasto subnacional — hallazgo que desafía la lógica redistributiva implícita en el sistema de coordinación fiscal vigente.</p>
-          <p>Consideramos que este trabajo es relevante para la audiencia de <span class="cl-placeholder">[Nombre de la Revista]</span> porque: (a) aborda un problema central del federalismo fiscal latinoamericano con evidencia empírica actualizada, (b) incorpora el período post-pandemia que no ha sido analizado previamente, y (c) ofrece implicaciones concretas de política pública para el diseño de transferencias intergubernamentales.</p>
+          <p>Le envío el manuscrito titulado <span class="cl-placeholder">"Volatilidad cambiaria y migración de la liquidez: evidencia del mercado de futuros del dólar en México (2009–2022)"</span> para su consideración en <span class="cl-placeholder">[Nombre de la Revista]</span>.</p>
+          <p>El artículo analiza la relación entre la volatilidad del tipo de cambio peso-dólar y el volumen de negociación de futuros del dólar en el Mercado Mexicano de Derivados (MexDer), mediante un modelo GARCH(1,1) y regresiones con errores robustos por subperíodos. Los resultados muestran que, a partir de 2016, la volatilidad cambiaria <strong>dejó de traducirse</strong> en mayor actividad del mercado local, mientras que el volumen en el CME creció a su costa — hallazgo que reorienta el debate sobre la profundidad del mercado de derivados en México.</p>
+          <p>Consideramos que este trabajo es relevante para la audiencia de <span class="cl-placeholder">[Nombre de la Revista]</span> porque: (a) aborda un problema central de los mercados financieros emergentes con evidencia empírica actualizada, (b) incorpora el período de la pandemia, que no ha sido analizado para este mercado, y (c) ofrece implicaciones concretas de política financiera para fortalecer el mercado local de derivados.</p>
           <p>Declaro que este manuscrito es original, no ha sido publicado previamente y no se encuentra en proceso de revisión en ninguna otra revista. Todos los autores han aprobado la versión final y aceptan los términos de publicación.</p>
           <p>Quedo atenta a su respuesta.</p>
           <p>Atentamente,<br><span class="cl-placeholder">[Nombre del autor]</span><br><span class="cl-placeholder">[Afiliación institucional]</span><br><span class="cl-placeholder">[Correo electrónico]</span></p>
@@ -546,9 +750,11 @@
   <div class="section" id="tab-checklist">
     <div class="summary-grid" id="summary-cards"></div>
     <div class="chips">
-      <button class="chip active" onclick="switchCL('resumen-c', this)">Abstract</button>
+      <button class="chip active" onclick="switchCL('estructura-c', this)">Estructura</button>
+      <button class="chip" onclick="switchCL('resumen-c', this)">Abstract</button>
       <button class="chip" onclick="switchCL('palabras-c', this)">Palabras clave</button>
       <button class="chip" onclick="switchCL('intro-c', this)">Introducción</button>
+      <button class="chip" onclick="switchCL('capitulos-c', this)">Capítulos</button>
       <button class="chip" onclick="switchCL('conclusiones-c', this)">Conclusiones</button>
       <button class="chip" onclick="switchCL('articulo-c', this)">De tesis a artículo</button>
       <button class="chip" onclick="switchCL('perfiles-c', this)">Perfil investigador</button>
@@ -559,9 +765,11 @@
         <i class="ti ti-refresh"></i> Reiniciar
       </button>
     </div>
-    <div class="cl-section active" id="cl-resumen-c"></div>
+    <div class="cl-section active" id="cl-estructura-c"></div>
+    <div class="cl-section" id="cl-resumen-c"></div>
     <div class="cl-section" id="cl-palabras-c"></div>
     <div class="cl-section" id="cl-intro-c"></div>
+    <div class="cl-section" id="cl-capitulos-c"></div>
     <div class="cl-section" id="cl-conclusiones-c"></div>
     <div class="cl-section" id="cl-articulo-c"></div>
     <div class="cl-section" id="cl-perfiles-c"></div>
@@ -585,23 +793,23 @@ const data = {
       { title:'Objetivo de la investigación', tag:'Obligatorio · 1ª oración',
         desc:'El resumen SIEMPRE inicia con el objetivo. No con el tema ni el contexto: con el objetivo. Utiliza un verbo de acción en infinitivo. Esta oración ancla todo lo que sigue.',
         qs:['¿Qué se buscó lograr con esta investigación?','¿El objetivo está expresado con un verbo preciso (analizar, determinar, evaluar, comparar...)?','¿Es la primera oración del resumen?'],
-        ej:'El presente estudio tiene como objetivo analizar la relación entre la estructura de la recaudación fiscal federal y la desigualdad en el desarrollo económico regional de México durante el período 2010–2022.' },
+        ej:'El presente estudio tiene como objetivo analizar la relación entre la volatilidad del tipo de cambio peso-dólar y el volumen de negociación de contratos de futuros del dólar en el MexDer durante el período 2009–2022.' },
       { title:'Metodología utilizada', tag:'Obligatorio · 1-2 oraciones',
         desc:'Señala brevemente el enfoque (cuantitativo, cualitativo o mixto), el tipo de investigación y los instrumentos principales. No es necesario detallar procedimientos.',
         qs:['¿Se menciona el enfoque metodológico?','¿Se indica el tipo de diseño o alcance del estudio?','¿Se señala el instrumento o técnica principal?'],
-        ej:'Se empleó una metodología cuantitativa de alcance correlacional con datos de panel para las 32 entidades federativas, usando modelos de regresión con efectos fijos.' },
+        ej:'Se empleó una metodología cuantitativa de alcance correlacional-explicativo con series mensuales del Banco de México, el MexDer y el CME Group; la volatilidad se estimó con un modelo GARCH(1,1) y su efecto, con regresiones con errores robustos de Newey-West.' },
       { title:'Hallazgos principales', tag:'Obligatorio · 2-3 oraciones',
         desc:'Presenta los resultados más relevantes con datos concretos. Evita generalizaciones vagas. Los hallazgos deben responder directamente al objetivo.',
         qs:['¿Los hallazgos responden directamente al objetivo?','¿Se incluyen datos numéricos o indicadores específicos?','¿Se distinguen los resultados principales de los secundarios?'],
-        ej:'Un incremento del 10% en las participaciones federales per cápita se asocia con una reducción de 0.08 puntos en el coeficiente de Gini, aunque el efecto es menor en entidades con alta dependencia de ingresos petroleros (β=−0.03, p<0.05).' },
+        ej:'Entre 2009 y 2015, un aumento de un punto porcentual en la volatilidad condicional se asoció con un incremento de 4.2% en el volumen de futuros (β = 0.042, p &lt; 0.01); entre 2016 y 2022 el efecto dejó de ser significativo (β = 0.011, p = 0.21).' },
       { title:'Limitaciones del estudio', tag:'Importante · 1 oración',
         desc:'Menciona la limitación más significativa que afecta la generalización o profundidad de los resultados. Ser transparente fortalece la credibilidad académica.',
         qs:['¿Se menciona al menos una limitación relevante?','¿Está redactada de forma concisa (una oración)?'],
-        ej:'El análisis no contempla la calidad del gasto ejercido a nivel subnacional, variable que podría moderar los efectos encontrados.' },
+        ej:'No se dispone de información mensual sobre la cobertura cambiaria pactada en el mercado extrabursátil (OTC) local, que podría explicar parte de la sustitución observada.' },
       { title:'Aportación o conclusión central', tag:'Obligatorio · Cierre',
         desc:'Esta es la última oración del resumen y debe ser la más poderosa. Expresa qué aporta tu investigación al conocimiento existente. Es el "para qué sirve" de tu trabajo.',
         qs:['¿Se señala explícitamente la contribución al campo de conocimiento?','¿O se indica la implicación práctica más relevante?','¿Es la última oración del resumen?'],
-        ej:'La investigación evidencia que la magnitud de las transferencias es insuficiente para reducir la desigualdad regional sin criterios de eficiencia en el gasto subnacional.' }
+        ej:'La contracción del MexDer no obedece a una menor demanda de cobertura, sino a la migración de la liquidez hacia mercados externos y extrabursátiles.' }
     ]
   },
   palabras: {
@@ -611,19 +819,19 @@ const data = {
       { title:'Términos del problema central', tag:'Obligatorio',
         desc:'Al menos una o dos palabras clave deben nombrar directamente el fenómeno o problema que investigas.',
         qs:['¿Las palabras reflejan el tema central?','¿Están presentes en el título y en el objetivo?'],
-        ej:'"federalismo fiscal", "desigualdad regional", "transferencias intergubernamentales"' },
+        ej:'"mercado de derivados", "futuros del dólar", "volatilidad cambiaria"' },
       { title:'Campo disciplinario o área de conocimiento', tag:'Recomendado',
         desc:'Incluye un término que ubique tu investigación dentro de una disciplina específica. Mejora su indexación en bases de datos académicas.',
         qs:['¿El área de conocimiento está representada?','¿El término es suficientemente específico?'],
-        ej:'"economía regional", "finanzas públicas", "desarrollo económico"' },
+        ej:'"economía financiera", "cobertura de riesgo", "mercados de derivados" (códigos JEL: G13, G15, F31)' },
       { title:'Contexto geográfico o sectorial', tag:'Cuando aplique',
         desc:'Si tu investigación se delimita a una región o sector, incluye un término que lo especifique.',
         qs:['¿La investigación tiene una delimitación geográfica o sectorial clara?'],
-        ej:'"México", "entidades federativas", "sector público subnacional"' },
+        ej:'"México", "MexDer", "mercados emergentes"' },
       { title:'Criterios formales de selección', tag:'Reglas de formato',
         desc:'Las palabras clave siguen convenciones académicas específicas. Su correcta presentación es parte de la calidad formal del documento.',
         qs:['¿Se presentan entre 4 y 6 términos?','¿Están en minúsculas, separadas por punto y coma?','¿Corresponden a descriptores reconocidos (Tesauro UNESCO, JEL...)?','¿Aparecen también en inglés si el programa lo requiere?'],
-        ej:'federalismo fiscal; desigualdad regional; desarrollo económico; transferencias intergubernamentales; México' }
+        ej:'mercado de derivados; futuros del dólar; volatilidad cambiaria; cobertura de riesgo; México' }
     ]
   },
   intro: {
@@ -633,27 +841,27 @@ const data = {
       { title:'Planteamiento del problema', tag:'Obligatorio · Apertura',
         desc:'La introducción SIEMPRE inicia con el problema de investigación. Debe ser contundente, cuantificado y generar interés desde la primera lectura.',
         qs:['¿Se describe el problema con precisión y sin ambigüedad?','¿Se cuantifica con datos actuales?','¿Queda claro por qué este problema merece investigarse ahora?'],
-        ej:'México es uno de los países con mayor desigualdad regional de la OCDE: el PIB per cápita de Nuevo León triplica al de Chiapas (INEGI, 2022), pese a los incrementos sostenidos en las transferencias fiscales.' },
+        ej:'El peso mexicano es una de las monedas emergentes más negociadas del mundo (BIS, 2022); sin embargo, el volumen anual de futuros en el MexDer cayó alrededor de 86% entre 2009 y 2022, aun en episodios de alta volatilidad cambiaria.' },
       { title:'Contexto y antecedentes', tag:'Obligatorio',
         desc:'Muestra cómo el problema ha sido abordado por otras instituciones y autores. Identifica el vacío que tu investigación cubre.',
-        qs:['¿Se citan estudios de organismos reconocidos (CEPAL, BM, OCDE...)?','¿Se mencionan investigaciones de otros autores?','¿Se identifica el vacío de conocimiento que tu trabajo cubre?'],
-        ej:'Sobarzo (2018) y Chávez y Fonseca (2021) analizaron el Fondo de Participaciones, pero no incorporan las modificaciones derivadas de la pandemia de 2020, dejando un vacío para el período 2014–2022.' },
+        qs:['¿Se citan estudios de organismos reconocidos (BIS, FMI, Banco de México...)?','¿Se mencionan investigaciones de otros autores?','¿Se identifica el vacío de conocimiento que tu trabajo cubre?'],
+        ej:'Johnson (1960) y Ederington (1979) fundamentan la demanda de cobertura con futuros; la evidencia para México se ha concentrado en la eficiencia de cobertura del MexDer y ha prestado poca atención a la competencia del CME y del mercado extrabursátil.' },
       { title:'Objetivo general e hipótesis', tag:'Obligatorio',
         desc:'Después de construir el contexto se enuncia el objetivo. La hipótesis sigue inmediatamente. Ambos deben desprenderse lógicamente del problema.',
         qs:['¿El objetivo utiliza un verbo de acción en infinitivo?','¿La hipótesis es falseable y verificable con los datos?','¿Hay coherencia entre problema, objetivo e hipótesis?'],
-        ej:'Objetivo: analizar la relación entre recaudación fiscal federal y desigualdad regional. Hipótesis: mayor volumen de participaciones per cápita no reduce la brecha regional sin mecanismos de eficiencia en el gasto subnacional.' },
+        ej:'Objetivo: analizar la relación entre la volatilidad del tipo de cambio peso-dólar y el volumen de futuros del dólar en el MexDer (2009–2022). Hipótesis: la volatilidad incrementa el volumen, pero el efecto se ha debilitado conforme la cobertura migra al CME y al mercado OTC.' },
       { title:'Marco metodológico general', tag:'Obligatorio',
         desc:'Anuncia —sin desarrollar en detalle— la metodología que se empleará. Orienta al lector y justifica la congruencia entre el objetivo y la forma de alcanzarlo.',
         qs:['¿Se menciona el enfoque (cuantitativo, cualitativo, mixto)?','¿Se señala el tipo o alcance del estudio?','¿Se describe la delimitación temporal, geográfica o sectorial?'],
-        ej:'Enfoque cuantitativo correlacional, datos de panel para 32 entidades federativas 2010–2022, modelos de regresión con efectos fijos, con información del INEGI, SHCP y CONEVAL.' },
+        ej:'Enfoque cuantitativo correlacional-explicativo, series mensuales 2009–2022 (Banco de México, MexDer y CME Group), volatilidad estimada con un GARCH(1,1) y regresiones con errores robustos de Newey-West por subperíodos.' },
       { title:'Variables del estudio', tag:'Importante',
         desc:'Las variables deben presentarse con claridad, especificando la dependiente y las independientes. Esto estructura el pensamiento analítico de toda la investigación.',
         qs:['¿Se identifica la variable dependiente?','¿Se identifican las variables independientes?','¿Se mencionan variables de control si aplican?'],
-        ej:'Variable dependiente: coeficiente de Gini estatal. Independientes: participaciones per cápita, aportaciones FAIS, recaudación propia estatal y composición del gasto subnacional.' },
+        ej:'Variable dependiente: logaritmo del volumen de futuros del dólar en el MexDer. Independientes: volatilidad condicional del tipo de cambio FIX, diferencial TIIE–fondos federales y volumen de futuros del peso en el CME. Controles: VIX y variable dicotómica COVID-19.' },
       { title:'Estructura del documento', tag:'Obligatorio · Cierre',
         desc:'La introducción cierra con un párrafo que describe cómo está organizado el documento. Es una convención académica que facilita la navegación del lector.',
         qs:['¿Se describe brevemente el contenido de cada capítulo?','¿El orden refleja una lógica de construcción argumentativa?','¿Es el último párrafo de la introducción?'],
-        ej:'Cinco capítulos: (I) marco teórico sobre federalismo fiscal; (II) metodología; (III) resultados econométricos; (IV) discusión; (V) conclusiones y líneas futuras.' }
+        ej:'Tres capítulos y conclusiones: (1) marco teórico de la cobertura con futuros; (2) evolución del mercado de derivados en México; (3) metodología y resultados; conclusiones, limitaciones y líneas futuras.' }
     ]
   },
   conclusiones: {
@@ -663,31 +871,57 @@ const data = {
       { title:'Retoma del problema de investigación', tag:'Obligatorio · Apertura',
         desc:'Las conclusiones abren retomando el problema original. Crea una estructura circular que da coherencia a todo el documento.',
         qs:['¿Se hace referencia explícita al problema planteado en la introducción?','¿Se contextualiza por qué ese problema era relevante?'],
-        ej:'La investigación partió de la paradoja de que el crecimiento de las transferencias fiscales no se tradujo en reducción de la brecha de desarrollo entre entidades federativas.' },
+        ej:'La investigación partió de la paradoja de que, pese a la alta volatilidad cambiaria, el volumen de futuros en el MexDer se redujo alrededor de 86% entre 2009 y 2022.' },
       { title:'Confirmación del alcance del objetivo', tag:'Obligatorio',
         desc:'Debes declarar explícitamente si el objetivo fue alcanzado. Esta declaración es la columna vertebral de las conclusiones.',
         qs:['¿Se confirma de manera directa que el objetivo fue cumplido?','¿Se explica en qué medida fue alcanzado?','¿El objetivo mencionado es idéntico al planteado en la introducción?'],
-        ej:'El objetivo de analizar la relación entre estructura fiscal federal y desigualdad regional fue alcanzado satisfactoriamente, identificando los mecanismos de interacción con precisión estadística.' },
+        ej:'El objetivo de analizar la relación entre la volatilidad del tipo de cambio y el volumen de futuros del dólar en el MexDer se alcanzó; las regresiones por subperíodos permitieron distinguir cómo cambió la relación antes y después de 2016.' },
       { title:'Comprobación de la hipótesis', tag:'Obligatorio si aplica',
         desc:'Si la investigación planteó una hipótesis, las conclusiones deben indicar si fue confirmada, rechazada o parcialmente sostenida. Es un requisito de rigor científico.',
         qs:['¿Se indica si la hipótesis fue confirmada o rechazada?','¿Se sustenta con referencia a los resultados?','¿Se señala si fue total o parcial?'],
-        ej:'Hipótesis confirmada: las entidades con indicadores de gestión pública por encima de la mediana mostraron un efecto redistributivo cuatro veces mayor por cada peso recibido (β=−0.03, p<0.05).' },
+        ej:'Hipótesis confirmada: el efecto de la volatilidad pasó de β = 0.042 (p &lt; 0.01) en 2009–2015 a β = 0.011 (p = 0.21) en 2016–2022.' },
       { title:'Enumeración de hallazgos', tag:'Obligatorio',
         desc:'Presenta los principales hallazgos en orden de relevancia. Cada hallazgo debe ser una conclusión analítica derivada de los datos, no una descripción de lo que hiciste.',
         qs:['¿Los hallazgos son conclusiones analíticas?','¿Se presentan en orden de relevancia?','¿Se incluyen hallazgos inesperados o contraintuitivos?'],
-        ej:'La recaudación fiscal propia de los estados resultó ser el predictor más robusto del desarrollo regional, por encima de cualquier transferencia federal, desplazando la lógica redistributiva tradicional.' },
+        ej:'El volumen de futuros del peso en el CME se relaciona negativamente con la actividad del MexDer (β = −0.351, p &lt; 0.01): hay sustitución entre mercados, no menor demanda de cobertura.' },
       { title:'Limitaciones del estudio', tag:'Obligatorio',
         desc:'Reconocer las limitaciones con honestidad intelectual fortalece tu trabajo. Señala qué no pudo abordarse y por qué, sin disculparte en exceso.',
         qs:['¿Se identifican las limitaciones metodológicas más relevantes?','¿Se señalan los límites de generalización de los resultados?'],
-        ej:'La ausencia de indicadores estandarizados de calidad del gasto subnacional obligó a utilizar proxies que pueden subestimar la varianza real entre entidades.' },
+        ej:'Falta información mensual sobre la cobertura pactada en el mercado extrabursátil local, y los datos agregados no permiten distinguir coberturistas de especuladores.' },
       { title:'Líneas futuras de investigación', tag:'Importante',
         desc:'Tu investigación no cierra el tema: lo avanza. Señala qué preguntas quedaron abiertas y qué enfoques complementarios podrían enriquecer el campo.',
         qs:['¿Se proponen al menos dos líneas de investigación futura?','¿Están formuladas como áreas de indagación específicas?','¿Se desprenden de los hallazgos y limitaciones reportados?'],
-        ej:'Explorar la institucionalidad local como variable moderadora y replicar el análisis con datos del período 2023–2025 para evaluar el impacto de las reformas recientes.' },
+        ej:'Analizar con datos por tipo de participante si la migración al CME responde a costos de transacción, márgenes o acceso de inversionistas extranjeros; extender el análisis a los futuros sobre la TIIE y el IPC.' },
       { title:'Aportación final — el broche de oro', tag:'Obligatorio · Cierre',
         desc:'La última oración o párrafo es la contribución original de tu investigación al campo. Es lo que hará que tu tesis sea recordada y citada. No la desperdicies.',
         qs:['¿Se declara explícitamente la aportación teórica y/o práctica?','¿Es el párrafo final de las conclusiones?','¿Responde a "¿qué sabe ahora la disciplina que no sabía antes"?'],
-        ej:'El problema de la desigualdad regional en México no es de insuficiencia en las transferencias, sino de desconexión entre el gasto federal descentralizado y la capacidad institucional subnacional: esta evidencia reorienta la agenda de política pública hacia el fortalecimiento de la gestión fiscal local.' }
+        ej:'El problema del MexDer no es la falta de demanda de cobertura, sino su incapacidad para retener la liquidez frente a mercados externos y extrabursátiles: la prioridad de política es reducir costos y barreras del mercado local.' }
+    ]
+  },
+  capitulos: {
+    num:'#E6F1FB', numTxt:'#0C447C', tag:'#E6F1FB', tagTxt:'#185FA5', border:'#378ADD',
+    exBg:'#E6F1FB', exTxt:'#0C447C',
+    elements:[
+      { title:'Citas en el texto', tag:'Obligatorio · APA 7',
+        desc:'APA 7 usa el sistema autor-fecha. La cita parentética pone autor y año entre paréntesis al final de la idea; la cita narrativa integra el apellido en la oración y el año entre paréntesis. Con tres o más autores se escribe solo el primer apellido seguido de et al. desde la primera cita. Toda cita debe aparecer en la lista de referencias y viceversa.',
+        qs:['¿Todas las citas siguen el formato autor-fecha?','¿Escribes et al. desde la primera cita cuando hay tres o más autores?','¿Cada cita aparece en las referencias y cada referencia está citada?','¿Las citas textuales de 40 palabras o más van en bloque, con sangría y sin comillas?'],
+        ej:'Parentética: «…para reducir la varianza de su riqueza (Johnson, 1960)». Narrativa: «De acuerdo con Ederington (1979), la efectividad de una cobertura se mide como…».' },
+      { title:'Ecuaciones', tag:'Obligatorio si aplica',
+        desc:'Escribe las ecuaciones con el editor de ecuaciones de Word (Insertar > Ecuación), nunca como imagen. Colócalas centradas en su propio renglón y numéralas a la derecha entre paréntesis; una tabla de dos columnas sin bordes facilita la alineación. Introdúcelas en el texto antes de que aparezcan, define cada símbolo inmediatamente después con «donde…» y refiérete a ellas por su número: «la ecuación (1)».',
+        qs:['¿La ecuación está hecha con el editor de ecuaciones y no como imagen?','¿Está centrada y numerada a la derecha entre paréntesis?','¿La introduces en el texto antes de que aparezca?','¿Defines cada símbolo después de la ecuación con «donde…»?','¿La numeración es consecutiva en todo el documento?'],
+        ej:'«La razón de cobertura de mínima varianza se obtiene con la ecuación (1): … (1), donde ΔS<sub>t</sub> es el cambio en el tipo de cambio de contado y ΔF<sub>t</sub> es el cambio en el precio del futuro.»' },
+      { title:'Tablas', tag:'Obligatorio · Formato APA',
+        desc:'Sobre la tabla va el número en negritas (Tabla 1) y, en el renglón siguiente, el título en cursiva, ambos alineados a la izquierda. Usa solo líneas horizontales (arriba y abajo del encabezado y al final), ninguna vertical. Debajo de la tabla va la nota: «Nota.» en cursiva, seguida de la fuente («Elaboración propia con datos de…»). Menciona cada tabla en el texto antes de que aparezca. Construye las tablas en Word o pégalas como tabla editable desde Excel, nunca como captura de pantalla. Si una tabla es muy ancha, colócala en una página horizontal, como la Tabla 1.',
+        qs:['¿El número va en negritas y el título en cursiva, arriba de la tabla?','¿La tabla tiene solo líneas horizontales?','¿Debajo tiene una nota con la fuente?','¿La mencionas en el texto antes de que aparezca?','¿Es una tabla editable y no una captura de pantalla?'],
+        ej:'<b>Tabla 2</b> / <i>Variables del estudio y fuentes de información</i> / [tabla] / <i>Nota.</i> Elaboración propia.' },
+      { title:'Figuras', tag:'Obligatorio · Formato APA',
+        desc:'Las figuras (gráficas, diagramas, mapas) siguen el mismo formato que las tablas: número en negritas (Figura 1), título en cursiva arriba y nota debajo. Inserta las gráficas como objetos de Excel o como imágenes de alta resolución, con ejes rotulados y unidades indicadas, y sin título dentro de la gráfica: el título va en el encabezado de la figura.',
+        qs:['¿El número va en negritas y el título en cursiva, arriba de la figura?','¿Los ejes tienen rótulos y unidades?','¿La gráfica no repite el título dentro de la imagen?','¿Debajo tiene una nota con la fuente?','¿La resolución permite leerla impresa?'],
+        ej:'<b>Figura 1</b> / <i>Volumen anual de negociación de contratos de futuros en el MexDer, 2009 a 2022</i> / [gráfica] / <i>Nota.</i> Elaboración propia con datos de [fuente] (año).' },
+      { title:'Resultados de modelos', tag:'Capítulo de resultados',
+        desc:'Reporta los resultados de tus modelos o encuestas en tablas de elaboración propia, nunca como capturas de pantalla del software. Después de cada tabla, interpreta los coeficientes relevantes: signo, magnitud y significancia.',
+        qs:['¿Los resultados están en una tabla de elaboración propia?','¿Reportas coeficientes, significancia y número de observaciones?','¿Interpretas signo, magnitud y significancia de los coeficientes relevantes?','¿La interpretación se conecta con la hipótesis?'],
+        ej:'En 2009–2015, un aumento de un punto porcentual en la volatilidad condicional se asocia con un incremento de 4.2% en el volumen de futuros (β<sub>1</sub> = 0.042, p &lt; 0.01).' }
     ]
   },
   articulo: {
@@ -697,7 +931,7 @@ const data = {
       { title:'Evalúa si tu tesis es publicable', tag:'Autoevaluación · Paso 1',
         desc:'No todas las tesis se convierten en artículos. Evalúa si tu trabajo tiene originalidad, datos propios o análisis novedoso, y una contribución clara al debate de tu campo. Una tesis puramente descriptiva puede requerir trabajo adicional antes de ser publicable.',
         qs:['¿Tu investigación aporta algo nuevo al campo (datos, método, hallazgos)?','¿Los resultados son robustos para sostenerse ante revisión por pares?','¿Existe un vacío en la literatura que tu trabajo llena?','¿Tienes datos originales o un análisis inédito?'],
-        ej:'Una tesis sobre transferencias fiscales y desigualdad regional con datos de panel 2010–2022 tiene potencial: (a) cubre un período no estudiado, (b) usa econometría rigurosa, y (c) genera hallazgos contraintuitivos.' },
+        ej:'Una tesis sobre volatilidad cambiaria y futuros del dólar en el MexDer (2009–2022) tiene potencial: (a) cubre un período poco estudiado, (b) usa econometría financiera rigurosa, y (c) genera un hallazgo contraintuitivo: la caída del mercado local no se debe a menor demanda de cobertura.' },
       { title:'Reestructura tu tesis como artículo', tag:'Redacción · Paso 2',
         desc:'La tesis es exhaustiva (80–150 pp); el artículo es conciso y argumentativo (15–25 pp, ~7,000 palabras). Recorta el marco teórico, fusiona secciones y reescribe con tono directo. Consulta la tabla comparativa Tesis vs. Artículo de esta sección.',
         qs:['¿Redujiste el marco teórico a lo esencial para contextualizar tu aporte?','¿La introducción va directo al problema, vacío y objetivo?','¿La metodología es reproducible pero concisa?','¿Los resultados se presentan con tablas/figuras claras?','¿La discusión compara tus hallazgos con la literatura?'],
@@ -705,7 +939,7 @@ const data = {
       { title:'Identifica revistas potenciales', tag:'Búsqueda · Paso 3',
         desc:'Investiga al menos 3-5 revistas ordenadas por preferencia. Revisa en qué revistas publican los autores que citas — eso te da pistas directas. Usa Scopus, Web of Science, Latindex 2.0, DOAJ y Scimago para comparar métricas.',
         qs:['¿Has buscado en Scopus, WoS o Latindex 2.0 revistas de tu área?','¿Has revisado en qué revistas publican los autores que citas?','¿Conoces el Factor de Impacto, SJR o CiteScore de tus opciones?','¿Verificaste que la revista esté indexada en al menos un índice reconocido?','¿La revista publica artículos con metodología similar?'],
-        ej:'Para un artículo sobre federalismo fiscal: Investigación Económica (UNAM, Scopus), El Trimestre Económico (FCE, WoS), Economía Teoría y Práctica (UAM), Problemas del Desarrollo (UNAM), o Journal of Latin American Studies.' },
+        ej:'Para un artículo sobre derivados en México: Revista Mexicana de Economía y Finanzas (REMEF), Contaduría y Administración (UNAM), Investigación Económica (UNAM), El Trimestre Económico (FCE) o Emerging Markets Review. Verifica la indexación vigente de cada una.' },
       { title:'Verifica que NO sea revista depredadora', tag:'Seguridad · Paso 4',
         desc:'Las revistas depredadoras cobran por publicar sin revisión por pares real. Publicar en una daña tu reputación y el SECIHTI no reconoce esas publicaciones. Usa Think.Check.Submit y la lista de Beall para verificar antes de enviar.',
         qs:['¿La revista aparece en DOAJ, Scopus, WoS o Latindex 2.0 Catálogo?','¿El sitio web tiene errores, promete publicación ultra-rápida o carece de ISSN?','¿Has verificado en thinkchecksubmit.org?','¿La editorial aparece en la lista de Beall (beallslist.net)?','¿El comité editorial tiene investigadores reales y verificables?','¿El proceso de revisión por pares está descrito transparentemente?'],
@@ -761,6 +995,16 @@ const data = {
 };
 
 const clItems = {
+  'estructura-c':[
+    {id:'e1',t:'La portada incluye los nombres de los directores de tesis'},
+    {id:'e2',t:'Se incluyen el acta de registro de tema (SIP-13), el acta de revisión (SIP-14) y la carta cesión de derechos'},
+    {id:'e3',t:'Los agradecimientos mencionan la beca SECIHTI y BEIFI, si aplica'},
+    {id:'e4',t:'Los índices son automáticos y están actualizados'},
+    {id:'e5',t:'Las páginas preliminares usan números romanos y el cuerpo, arábigos desde el Capítulo 1'},
+    {id:'e6',t:'Los títulos siguen los niveles de APA 7, sin versalitas'},
+    {id:'e7',t:'Las referencias están en orden alfabético con sangría francesa'},
+    {id:'e8',t:'Los anexos se identifican con letras y se citan en el texto'}
+  ],
   'resumen-c':[
     {id:'r1',t:'El resumen inicia con el objetivo de la investigación'},
     {id:'r2',t:'El objetivo está expresado con un verbo de acción en infinitivo'},
@@ -789,6 +1033,17 @@ const clItems = {
     {id:'i7',t:'Se menciona el enfoque metodológico y tipo de estudio'},
     {id:'i8',t:'Se identifican la variable dependiente e independientes'},
     {id:'i9',t:'Cierra con una descripción de la estructura del documento'}
+  ],
+  'capitulos-c':[
+    {id:'k1',t:'Todas las citas siguen el formato autor-fecha de APA 7'},
+    {id:'k2',t:'Cada cita aparece en las referencias y viceversa'},
+    {id:'k3',t:'Las ecuaciones están hechas con el editor de ecuaciones, centradas y numeradas a la derecha'},
+    {id:'k4',t:'Cada símbolo se define después de la ecuación'},
+    {id:'k5',t:'Tablas y figuras tienen número en negritas y título en cursiva arriba'},
+    {id:'k6',t:'Las tablas no tienen líneas verticales'},
+    {id:'k7',t:'Cada tabla y figura tiene una nota con la fuente'},
+    {id:'k8',t:'Cada tabla y figura se menciona en el texto antes de aparecer'},
+    {id:'k9',t:'Ningún resultado se presenta como captura de pantalla del software'}
   ],
   'conclusiones-c':[
     {id:'c1',t:'Abre retomando el problema planteado en la introducción'},
@@ -874,6 +1129,11 @@ function switchTab(name, btn) {
   btn.classList.add('active'); btn.setAttribute('aria-selected','true');
 }
 
+function goTab(name) {
+  const btn = document.querySelector(`.tab-btn[onclick*="'${name}'"]`);
+  if (btn) { switchTab(name, btn); btn.scrollIntoView({block:'nearest', inline:'center'}); window.scrollTo({top: document.querySelector('.tabs').offsetTop - 12, behavior:'smooth'}); }
+}
+
 /* ── EXAMPLE FULL ───────────────────────────────────── */
 function toggleFull(id) {
   const body = document.getElementById(id);
@@ -922,9 +1182,11 @@ function switchCL(name, btn) {
 
 function updateSummary() {
   const secs = [
+    {key:'estructura-c', lbl:'Estructura'},
     {key:'resumen-c',   lbl:'Abstract'},
     {key:'palabras-c',  lbl:'Palabras clave'},
     {key:'intro-c',     lbl:'Introducción'},
+    {key:'capitulos-c', lbl:'Capítulos'},
     {key:'conclusiones-c', lbl:'Conclusiones'},
     {key:'articulo-c',  lbl:'Tesis→Artículo'},
     {key:'perfiles-c',  lbl:'Perfiles'}
@@ -947,7 +1209,7 @@ function updateSummary() {
 }
 
 /* ── INIT ───────────────────────────────────────────── */
-['resumen','palabras','intro','conclusiones','articulo','perfiles'].forEach(k => buildElements(k+'-elements', k));
+['resumen','palabras','intro','capitulos','conclusiones','articulo','perfiles'].forEach(k => buildElements(k+'-elements', k));
 Object.keys(clItems).forEach(k => buildCL(k));
 updateSummary();
 </script>
